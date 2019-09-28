@@ -1,0 +1,9 @@
+﻿l_english:
+####################################
+ # Diplomacy text
+ ####################################
+ 
+ # General Greetings
+ PIR:1 "Pirate"
+ name_list_PIR1: "Pirate 1"
+ 

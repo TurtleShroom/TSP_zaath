@@ -1,0 +1,674 @@
+namespace = HEEGM
+
+country_event = {
+	id = HEEGM.1
+	hide_window = yes
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			is_country_type = global_event
+			is_country_type = shroud
+			is_ai = no
+		}
+	}
+
+	immediate = {
+		log = "Zaath Mod successfully initialized"
+		set_global_flag = hide_your_bread_hide_your_life
+	}
+
+	after = {
+		country_event = {
+			id = HEEGM.3
+			days = 3
+		}
+	}
+}
+
+
+country_event = {
+	id = HEEGM.2
+	hide_window = yes
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			is_country_type = global_event
+			is_country_tyoe = shroud
+			is_ai = no
+		}
+	}
+	
+#	mean_time_to_happen = {
+#		months = 1
+#	}
+	
+	immediate = {
+		create_species = {
+			name = "Zaath"
+			class = ART
+			portrait = art17
+			traits = {
+				add_trait = trait_zaath
+				add_trait = trait_psionic
+				add_trait = trait_decadent
+			}
+			homeworld = event_target:TSP_zaath_exploded_planet
+			sapient = yes
+			immortal = yes
+		}
+
+		last_created_species = {
+			save_global_event_target_as = Zaathspecies
+#			set_pop_flag = Zaathspecies
+			set_species_flag = Zaathspecies # Added twice because of capitalization conflicts
+			set_species_flag = zaathspecies
+			set_species_flag = zaath
+		}
+
+#		event_target:Zaathspecies = {
+#			set_species_homeworld = event_target:TSP_zaath_exploded_planet
+#		}
+#
+#		every_country = {
+#			limit = {
+#				OR = {
+#					has_civic = civic_ancient
+#					has_civic = civic_GM
+#				}
+#			}
+#		
+#			set_country_type = TheAncients
+#			change_government = {
+#				authority = auth_ancient
+#			}
+#			event = { id = HEEGM.3 }
+#		}
+	}
+
+	after = {
+		set_global_flag = hide_your_bread_hide_your_life
+
+		log = "ZAATH SPECIES SPAWNED: We've got some Xeno-phages up in here. Hide your BREAD! Hide your life!"
+
+		country_event = { id = HEEGM.8 days = 3 }
+	}
+}
+
+#Initialize Nomadic FE Sequence: CREATE THE SOLAR SYSTEM
+country_event = {
+	id = HEEGM.3
+	hide_window = yes
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {
+		OR = {
+			is_country_type = global_event
+			is_country_tyoe = shroud
+			is_ai = no
+		}
+	}
+
+	immediate = {
+		random_rim_system = {
+			limit = {
+				NOT = { exists = space_owner }
+				NOT = { has_star_flag = hostile_system }
+			}
+
+			spawn_system = {
+				min_distance = 1
+				max_distance = 12
+				initializer = TSP_ssb_loaf_core_system_initializer
+				hyperlane = yes
+				is_discovered = yes
+			}
+		}
+
+		last_created_system = {
+			random_system_planet = {
+				limit = {
+					OR = {
+						is_star = yes
+						has_planet_flag = TSP_zaath_i_swear_this_is_a_star
+						has_planet_flag = zaath_central_body
+						has_planet_flag = TSP_zaath_home_system
+						has_planet_flag = TSP_zaath_core
+						is_planet_class = pc_crystal_asteroid # Fall back fail safe
+					}
+				}
+				save_event_target_as = spawnpoint
+				save_global_event_target_as = TSP_zaath_return_zone
+			}
+			every_system_planet = {
+				limit = {
+					is_star = no
+					NOT = {
+						is_planet_class = pc_asteroid
+						is_planet_class = pc_ice_asteroid
+						is_planet_class = pc_crystal_asteroid
+						is_planet_class = pc_gas_giant
+						has_planet_flag = TSP_secret_blorg_planet
+					}
+				}
+				change_pc = pc_shrouded
+				set_planet_flag = TSP_zaath_home_system_flavor_planet
+			}
+			random_system_planet = {
+				limit = {
+					is_star = no
+					NOT = {
+						is_planet_class = pc_asteroid
+						is_planet_class = pc_ice_asteroid
+						is_planet_class = pc_crystal_asteroid
+					}
+				}
+				change_pc = pc_shattered
+				set_planet_flag = zaath_flavor_explosion_planet
+				save_global_event_target_as = TSP_zaath_exploded_planet
+				set_name = "IT LISTENS"
+			}
+		}
+		
+#		event_target:Zaathspecies = {
+#			set_species_homeworld = event_target:TSP_zaath_exploded_planet
+#		}
+	}
+
+	after = {
+		log = "IT LISTENS: Zaath system selected"
+		
+		country_event = { id = HEEGM.2 days = 3 }
+	}
+}
+		
+country_event = { # Reformed Zaath
+	id = HEEGM.4
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		save_event_target_as = target0
+		every_country = {
+			country_event = { id = HEEGM.5 }
+		}
+		set_global_flag = AncientReform
+	}
+}
+
+country_event = { # Reformation Announcement
+	id = HEEGM.5
+	title = HEEGM.5.title
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	immediate = {
+		set_global_flag = AncientReform
+	}
+	
+	desc = {#Xenophobe
+		text = "HEEGM.5.desca"
+		trigger = {
+			event_target:target0 = { has_ethic = ethic_fanatic_xenophobe }
+		}
+	}
+	desc = {#Xenophile
+		text = "HEEGM.5.descb"
+		trigger = {
+			event_target:target0 = { has_ethic = ethic_fanatic_xenophile }
+		}		
+	}
+	desc = {#Militarist
+		text = "HEEGM.5.descc"
+		trigger = {
+			event_target:target0 = { has_ethic = ethic_fanatic_militarist }
+		}
+	}
+	
+	option = {
+		name = "OMINOUS"
+	}
+}
+		
+country_event = { # Warmonger Request
+	id = HEEGM.6
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_edict = invitecoalition
+	}
+	
+	immediate = {
+		set_timed_country_flag = { flag = coalitioninvited days = 360 }
+		save_event_target_as = coalitionleader
+#		every_country = {
+#			limit = { 
+#				is_country_type = default
+#			}
+#			country_event = { id =  }
+#		}
+	}
+	
+#	option = {
+#		name = "ACCEPT"
+#		join_war = from
+#	}
+#	
+#	option = {
+#		name = "DENY"
+#	}
+}
+
+country_event = { # Request
+	id = HEEGM.7
+	title = HEEGM.1001.title
+	desc = HEEGM.1001.desc
+	is_triggered_only = yes
+	
+	option = {
+		name = EXCELLENT
+	}
+}
+
+country_event = {
+	id = HEEGM.8
+	hide_window = yes
+	is_triggered_only = yes
+
+
+	trigger = {
+		OR = {
+			is_country_type = global_event
+			is_country_tyoe = shroud
+			is_ai = no
+		}
+	}
+
+	immediate = {
+		create_country = { 
+			name = "The Iron Ancients"
+			type = TheAncients
+			auto_delete = no
+			name_list = PRT1
+			ship_prefix = "ZIA-A"
+			authority = auth_ancient
+			civics = {
+				civic = civic_ancient
+				civic = civic_GM
+			}
+			species = event_target:Zaathspecies
+			flag = random
+#			background = random
+			ethos = {
+				ethic = ethic_fanatic_xenophobe # Only one, like a FE
+			}
+		}
+
+		last_created_country = {
+			every_owned_leader = {
+				kill_leader = { show_notification = no }
+			}
+
+			change_dominant_species = {
+				species = event_target:Zaathspecies
+				change_all = yes
+			}
+			
+			owner_species = {
+				set_species_homeworld = event_target:TSP_zaath_exploded_planet
+			}
+			
+			every_owned_fleet = {
+				destroy_fleet = this
+			}
+
+			add_modifier = { modifier = Zaathstarterbuffs days = 3600 }
+			add_modifier = { modifier = Zaath days = -1 }
+			set_graphical_culture = extra_dimensional_03
+			set_city_graphical_culture = fallen_empire_04
+
+			set_name = "The Iron Ancients"
+			save_global_event_target_as = AncientA
+			set_country_flag = xenoancient
+			set_country_type = TheAncients
+			
+			change_government = {
+				authority = auth_ancient
+			}
+
+			event_target:TSP_zaath_exploded_planet = {
+				set_planet_flag = AncientMarkedA
+				save_global_event_target_as = AncientMarkedA
+				destroy_colony = yes
+			}
+
+			create_fleet = {
+				name = "Zaath Mothership and Fleet"
+				effect = {
+					set_fleet_flag = AncientFlagshipA
+					set_owner = event_target:AncientA
+					create_ship = {
+						name = "Big Momma"
+						design = "Ancient_Flagship"
+						graphical_culture = "extra_dimensional_03"
+						upgradable = no
+					}
+					create_ship = {
+						name = "Go Commit Die"
+						design = "small_ship_fallen_empire"
+						graphical_culture = "fallen_empire_04"
+					}
+					create_ship = {
+						name = "Seize the BREAD"
+						design = "small_ship_fallen_empire"
+						graphical_culture = "fallen_empire_04"
+					}
+					create_ship = {
+						name = "IT'S ZAATHY TIME!"
+						design = "destroyer"
+						graphical_culture = avian_01
+						upgradable = no
+					}
+					create_ship = {
+						name = "NO, DAD, NO!"
+						design = "corvette"
+						graphical_culture = avian_01
+						upgradable = no
+					}
+					assign_leader = event_target:newruler
+					set_location = event_target:TSP_zaath_return_zone
+				}
+				settings = { 
+					can_upgrade = no 
+					can_disband = no
+#					can_change_composition = no
+					can_change_leader = no 
+					uses_naval_capacity = no
+				}
+			}
+			
+			last_created_fleet = {
+				set_fleet_flag = TSP_ZAATH_FLEET_A
+			}
+			
+#			every_owned_fleet = {
+#				limit = { NOT = { has_fleet_flag = TSP_ZAATH_FLEET_A }  }
+#				auto_follow_fleet = {
+#					target = PREVPREV
+#					attack_fleet = no
+#				}
+#			}
+
+#			# XENOES! START, YOUR, ENGIIIIINES!! #
+
+			every_owned_fleet = { fleet_event = { id = TSP_HEO_flavor_ancient_events.1 } }
+		}
+	}
+
+	after = {
+		event = {
+			id = HEEGM.9
+			days = 3
+		}
+	}
+}
+
+country_event = {
+	id = HEEGM.9
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			is_country_type = global_event
+			is_country_tyoe = shroud
+			is_ai = no
+		}
+	}
+
+	immediate = {
+		create_country = { 
+			name = "The Destructive Ancients"
+			type = TheAncients
+			auto_delete = no
+			name_list = PRT1
+			ship_prefix = "ZDA-B"
+			authority = auth_ancient
+			civics = {
+				civic = civic_ancient
+				civic = civic_GM
+			}
+			species = event_target:Zaathspecies
+			flag = random
+#			background = random
+			ethos = {
+				ethic = ethic_fanatic_militarist # Only one, like a FE
+			}
+		}
+
+		last_created_country = {
+			every_owned_leader = {
+				kill_leader = { show_notification = no }
+			}
+			set_graphical_culture = extra_dimensional_02
+			set_city_graphical_culture = fallen_empire_04
+			set_name = "The Destructive Ancients"
+			save_global_event_target_as = AncientB
+			add_modifier = { modifier = Zaathstarterbuffs days = 3600 }
+			add_modifier = { modifier = Zaath days = -1 }
+			set_country_flag = martialancient
+
+			set_country_type = TheAncients
+
+			change_government = {
+				authority = auth_ancient
+			}
+			
+			event_target:TSP_zaath_exploded_planet = {
+				set_planet_flag = AncientMarkedB
+				save_global_event_target_as = AncientMarkedB
+#				destroy_colony = yes
+			}
+
+			create_fleet = {
+				name = "Zaath Mothership and Fleet"
+				effect = {
+					set_fleet_flag = AncientFlagshipB
+					set_owner = event_target:AncientB
+					create_ship = {
+						name = "Phoenix"
+						design = "Ancient_Flagship"
+#						graphical_culture = "extra_dimensional_02" # The Mothership uses Shroud Entities, which lack a GC!
+						upgradable = no
+					}
+					create_ship = {
+						name = "The Big 'OOF' of Grox"
+						design = "corrupted_avatar"
+						# Graphical Cultures don't exist for Psionic creatures
+						upgradable = no
+					}
+					create_ship = {
+						name = "Go Commit Die"
+						design = "small_ship_fallen_empire"
+						graphical_culture = "fallen_empire_04"
+						upgradable = no
+					}
+					create_ship = {
+						name = "Seize the BREAD"
+						design = "small_ship_fallen_empire"
+						graphical_culture = "fallen_empire_04"
+						upgradable = no
+					}
+					create_ship = {
+						name = "IT'S ZAATHY TIME!"
+						design = "destroyer"
+						graphical_culture = avian_01
+						upgradable = no
+					}
+					create_ship = {
+						name = "NO, DAD, NO!"
+						design = "corvette"
+						graphical_culture = avian_01
+						upgradable = no
+					}
+					assign_leader = event_target:newruler
+					set_location = event_target:TSP_zaath_return_zone
+				}
+				settings = { 
+					can_upgrade = no 
+					can_disband = no
+					can_change_composition = yes
+					can_change_leader = no 
+					uses_naval_capacity = no
+				}
+			}
+			
+			last_created_fleet = {
+				set_fleet_flag = TSP_ZAATH_FLEET_B
+			}
+			
+#			every_owned_fleet = {
+#				limit = { NOT = { has_fleet_flag = TSP_ZAATH_FLEET_B }  }
+#				auto_follow_fleet = {
+#					target = AncientFlagshipB
+#					attack_fleet = no
+#				}
+#			}
+
+#			# XENOES! START, YOUR, ENGIIIIINES!! #
+			every_owned_fleet = {
+				fleet_event = { id = TSP_HEO_flavor_ancient_events.2 }
+			}
+		}
+		after = {
+			event = {
+				id = HEEGM.10
+				days = 3
+			}
+		}
+	}
+}
+
+country_event = {
+	id = HEEGM.10
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			is_country_type = global_event
+			is_country_tyoe = shroud
+			is_ai = no
+		}
+	}
+
+	immediate = {
+		create_country = { 
+			name = "The Benevolent Ancients"
+			type = TheAncients
+			auto_delete = no
+			name_list = PRT1
+			ship_prefix = "ZDA-C"
+			authority = auth_ancient
+			civics = {
+				civic = civic_ancient
+				civic = civic_GM
+			}
+			species = event_target:Zaathspecies
+			flag = random
+#			background = random
+			ethos = {
+				ethic = ethic_fanatic_xenophile
+				ethic = ethic_pacifist
+			}
+		}
+
+		last_created_country = {
+			every_owned_leader = {
+				kill_leader = { show_notification = no }
+			}
+			
+			set_faction_hostility = {
+				target = THIS
+				set_hostile = no
+				set_neutral = no
+				set_friendly = yes
+			}
+
+			set_graphical_culture = extra_dimensional_01
+			set_city_graphical_culture = fallen_empire_04
+			set_name = "Collective Regime of Ancient Peace and Love"
+			set_country_flag = egalancient
+
+			add_modifier = { modifier = Zaathstarterbuffs days = 3600 }
+			add_modifier = { modifier = Zaath days = -1 }
+			save_global_event_target_as = AncientC
+
+			event_target:TSP_zaath_exploded_planet = {
+				set_planet_flag = AncientMarkedC
+				save_global_event_target_as = AncientMarkedC
+#				destroy_colony = yes
+			}
+
+			every_owned_fleet = {
+				destroy_fleet = this
+			}
+
+			create_fleet = {
+				name = "Zaath Mothership and Fleet"
+				effect = {
+					set_fleet_flag = AncientFlagshipC
+					set_owner = event_target:AncientC
+					create_ship = {
+						name = "TurtleShroom"
+						design = "Ancient_Flagship"
+#						graphical_culture = extra_dimensional_01
+						upgradable = no
+					}
+					create_ship = {
+						name = "Protection of the Innocent"
+						design = "small_ship_fallen_empire"
+						graphical_culture = "fallen_empire_04"
+						upgradable = no
+					}
+					create_ship = {
+						name = "Seize the BREAD"
+						design = "small_ship_fallen_empire"
+						graphical_culture = "fallen_empire_04"
+						upgradable = no
+					}
+					assign_leader = event_target:ruler
+					set_location = event_target:TSP_zaath_return_zone
+					set_fleet_stance = evasive
+				}
+				settings = { 
+					can_upgrade = no 
+					can_disband = no
+					can_change_composition = no 
+					can_change_leader = no 
+					uses_naval_capacity = no
+				}
+			}
+			
+			last_created_fleet = {
+				set_fleet_flag = TSP_ZAATH_FLEET_C
+			}
+			
+#			every_owned_fleet = {
+#				limit = { NOT = { has_fleet_flag = TSP_ZAATH_FLEET_C }  }
+#				auto_follow_fleet = {
+#					target = AncientFlagshipC
+#					attack_fleet = no
+#				}
+#			}
+
+#			# XENOES! START, YOUR, ENGIIIIINES!! #
+			every_owned_fleet = { fleet_event = { id = TSP_HEO_flavor_ancient_events.3 } }
+		}
+	}
+}

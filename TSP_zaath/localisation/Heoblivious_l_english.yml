@@ -1,0 +1,147 @@
+﻿l_english:
+#GENERAL
+ civic_ancient:0 "The Ancient Zaaths"
+ civic_GM:0 "Monothelite Puppetry"
+ auth_ancient:0 "Fallen Zaath Authority"
+ auth_reformedancient:0 "Ascended Zaath Authority"
+
+ TheAncients:0 "Ancient Zaath Authority"
+ TheAncients_desc:0 "A bunch of specimen called the Zaath. They have been here longer than the galaxy has ever existed, now reduced to the level that is Fallen Empires."
+
+ TheAncientsReformed:0 "Ascended Zaath Authority"
+ TheAncientsReformed:0 "The Zaath have finally united under one mind, and they have far ascended that is the organics that they once tolerated."
+
+ trait_zaath:0 "Zaath"
+ trait_Rzaath:0 "Zaath-X"
+
+ trait_ZAATHRENOWN:0 "Zaath Renown"
+
+#Ascension Perks
+ AncientThwarting:0 "Ancient Cleansers"
+ AncientThwarting_desc:0 "Rid of the old, on with the new! These creatures must go."
+ AncientThwarting_modifier_desc:0 "Damage to §YReformed Zaath§ increased by §G+50%§!"
+
+ AncientReform:0 "Ancient Reformations 1"
+ AncientReform_desc:0 "Zaath; like all empires have to start somewhere on regaining control of the galaxy."
+ AncientReform_modifier_desc:0 "Zaath will now automatically spawn colony ships to spread their influence further into the galaxy"
+
+ AncientReformsTWO:0 "Ancient Reformations 2"
+ AncientReformsTWO_desc:0 "As we get closer and closer to the shroud it shows us that we aren't alone. It shows that there are other Zaaths like us trying to take this world for themselves."
+ AncientReformsTWO_modifier_desc:0 "Zaath now gain unity twice as fast, and can now expand past the rims of the galaxy."
+
+ AncientReformsTHREE:0 "Ancient Reformations 3"
+ AncientReformsTHREE_desc:0 "The Final Reformation has been reached, the galaxy is still waiting for us to retake what we have lost."
+ AncientReformsTHREE_modifier_desc:0 "No more Restrictions. The Galaxy is ready to be taken!"
+
+#// Tooltips
+ AncientNOTREFORMED:0 "There are no §RReformed Zaath§ yet!"
+ AncientTooFast:0 "You must wait §Yone hundred years§ before you rise up!"
+
+#
+# MAIN MENU
+#
+ zaathcomms.1.a:0 "Game Master Options"
+ zaathcomms.1.b:0 "Punish (Subject)"
+ zaathcomms.1.c:0 "Reward - +5 to +15 Decadence"
+ zaathcomms.1.d:0 "Demand (Subject Pact) - +10 Decadence"
+ zaathcomms.1.dd:0 "Break (Subject Pact) - -5 Decadence"
+ zaathcomms.1.e:0 "Induct into Zaath Cult - +15 Decadence"
+ zaathcomms.1.f:0 "Infect Player - +15 Decadence"
+ zaathcomms.1.g:0 "Request to eat Pop - -5 Decadence IF accepted"
+ zaathcomms.1.h:0 "Establish Communications - +25 Decadence"
+
+#
+# GM OPTIONS MENU
+#
+ zaathcomms.2.a:0 "Turn Warmonger ON"
+ zaathcomms.2.b:0 "Turn Warmonger OFF"
+ zaathcomms.2.c:0 "Establish Communications"
+
+#
+# Gift Menu 
+#
+ zaathcomms.3.a:0 "A Small gift of Minerals - -5 Decadence"
+ zaathcomms.3.b:0 "A Medium gift of Minerals - -10 Decadence"
+ zaathcomms.3.c:0 "A Large gift of Minerals - -15 Decadence"
+ zaathcomms.3.d:0 "A Small gift of Energy - -5 Decadence"
+ zaathcomms.3.e:0 "A Medium gift of Energy - -10 Decadence"
+ zaathcomms.3.f:0 "A Large gift of Energy - -15 Decadence"
+ zaathcomms.3.g:0 "A Small gift of Food - -5 Decadence"
+ zaathcomms.3.h:0 "A Medium gift of Food - -10 Decadence"
+ zaathcomms.3.i:0 "A Large gift of Food - -15 Decadence"
+
+ Thank:0 "We thank you for this Gift"
+ NoThanks:0 "We have to decline this Gift"
+
+ zaathcomms.200.desc:0 "On the behalf of us ZAATH we have decided to §GGIVE YOU PRIMITIVES§ a §YSmall Gift of Minerals§."
+ zaathcomms.201.desc:0 "On the behalf of us ZAATH we have decided to §GGIVE YOU PRIMITIVES§ a §YModerate Gift of Minerals§."
+ zaathcomms.202.desc:0 "On the behalf of us ZAATH we have decided to §GGIVE YOU PRIMITIVES§ a §YLarge Gift of Minerals§."
+
+ zaathcomms.203.desc:0 "On the behalf of us ZAATH we have decided to §GGIVE YOU PRIMITIVES§ a §YSmall Gift of Energy§."
+ zaathcomms.204.desc:0 "On the behalf of us ZAATH we have decided to §GGIVE YOU PRIMITIVES§ a §YModerate Gift of Energy§."
+ zaathcomms.205.desc:0 "On the behalf of us ZAATH we have decided to §GGIVE YOU PRIMITIVES§ a §YLarge Gift of Energy§."
+
+ zaathcomms.206.desc:0 "On the behalf of us ZAATH we have decided to §GGIVE YOU PRIMITIVES§ a §YSmall Gift of Food§."
+ zaathcomms.207.desc:0 "On the behalf of us ZAATH we have decided to §GGIVE YOU PRIMITIVES§ a §YModerate of Food§."
+ zaathcomms.208.desc:0 "On the behalf of us ZAATH we have decided to §GGIVE YOU PRIMITIVES§ a §YLarge Gift of Food§."
+
+#
+# Subject Demand
+#
+ zaathcomms.4.a:0 "Are you sure you want to Demand this? We will recieve §R+10 Decadence§ upon request."
+#
+# Dialogue
+#
+ zaathcomms.1.desc:0 "Go on... the Shroud is listening to your every command..."
+ zaathcomms.1.desc:1 "What have we today..."
+ zaathcomms.1.desc:2 "The Galaxy... It's very primitive... let's fix that, together."
+#
+ zaathcomms.2.desc:0 "The Shroud beckons... §PGAME MASTER§!, what are we doing?"
+#
+ zaathcomms.3.desc:0 "Gifting the primitives? Hmm.. I suppose.."
+ zaathcomms.3.desc:1 "Primitives don't deserve love... but if you think so..."
+ zaathcomms.3.desc:2 "How much are giving these primitives...?"
+#
+ zaathcomms.4.desc:0 "..."
+
+ zaathcommsSHAME:0 "Such a shame that the primitive creatures do not understand even this simple gesture."
+ zaathcommsSHAME:1 "ZAAAAAAAAAAAAAAAAAH!"
+ zaathcommsSHAME:2 "Primitives..."
+ zaathcommsSHAME:3 "Shame..."
+ zaathcommsSHAME:4 "DEATH COMES TO THE UNGRATEFUL!"
+ zaathcommsSHAME:5 "ZAAAAAAAAAAAAAAAAAATH!"
+ zaathcommsSHAME:6 "Well then, DOOM ON YOU. DOOM ON YOU! DOOM ON YOU!"
+
+#COUNTRY_ANCIENT:0 "Zaath Scum"
+#COUNTRY_REFORMED_ANCIENTS:0 "Reformed Zaath"
+
+ zaathcommsDONE:0 "As you wish..."
+ zaathcommsGChoice:0 "Good choice..."
+
+#
+# Zaath Cult MENU
+#
+ zaathcomms.11.desc:0 "Are you sure you want to invite this species into your Zaath Cult? This will give you §Y+15 Decadence§"
+
+#
+# Zaath Request Pop Variants
+#
+ zaathcomms.221.desca:0 "We Zaath demand you filthy xenos render your tithe of §RBREAD§! unto your masters. We heard your people are a delicacy and wish to try it. If you refuse our demands we will crush you like the insects you are."
+ zaathcomms.221.descb:0 "We Zaath kindly request that you present your tithe of §RBREAD§R! to us. As you well know, we are famous for our utopian post-scarcity and endless cures for boredom... the myth of our decadence is just that. Your §RBREAD§! is very much needed on board our ships, and don't worry, that word means §GGUEST OF HONOR§! in our language! We offer the best mobile vacational homes in the galaxy, with such good reviews! They'll never want to leave!"
+ zaathcomms.221.descc:0 "We Zaath require that you present your tithe of §RBREAD§! to us. Our ships need more soldiers and worthy operators to promote our cause! Special training will be needed for this newly enlisted §RBREAD§!, for the good of the Galaxy! Don't worry, that word means §GELITE FORCES§! in our language!"
+
+
+#
+# Resources
+#
+ Zinfection:0 "Zaath Infection"
+ Zdecadence:0 "Zaath Decadence"
+ zzzZaath_Resources:0 "Zaath Resources"
+
+#
+# Casus Belli and War Goals
+#
+ cb_warmonger:0 "Coalition"
+ wg_warmongerattack:0 "Coalition"
+ wg_warmongerdefense:0 "Coalition Defense"
+ 

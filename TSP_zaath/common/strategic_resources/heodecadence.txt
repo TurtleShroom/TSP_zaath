@@ -1,0 +1,46 @@
+Zdecadence = {
+	tradable = no
+	tooltip_decimals = 1
+	max = 100
+#	icon = "interface\icons\resources\pole_blorg_decadence.dds"
+	
+	visibility_prerequisite = {
+		OR = {
+			has_authority = auth_ancient
+			has_authority = auth_reformedancient
+			is_country_type = TheAncients
+			is_country_type = TheAncientsReformed
+		}
+	}
+}
+
+zzzZaath_Resources = {
+	tradable = no
+	max = 1
+	
+	visibility_prerequisite = {
+		OR = {
+			has_authority = auth_ancient
+			has_authority = auth_reformedancient
+			is_country_type = TheAncients
+			is_country_type = TheAncientsReformed
+		}
+	}
+}
+
+ZPsionicPower = {
+	tradable = no
+	max = 1000
+#	icon = "interface\icons\resources\B_R_E_A_D.dds"
+	
+	visibility_prerequisite = {
+		OR = {
+			has_authority = auth_ancient
+			has_authority = auth_reformedancient
+			is_country_type = TheAncients
+			is_country_type = TheAncientsReformed
+			has_trait = trait_latent_psionic # Scope to country's ruling species
+			has_trait = trait_psionic # Scope to country's ruling species
+		}
+	}
+}

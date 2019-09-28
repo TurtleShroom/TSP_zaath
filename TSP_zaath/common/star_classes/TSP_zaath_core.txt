@@ -1,0 +1,30 @@
+sc_TSP_zaath = {
+	class 			= neutron_star # Determines the lighting
+	icon 			= sc_black_hole
+	icon_scale		= 1
+	planet			= { key = pc_crystal_asteroid }
+	spawn_odds 		= 0
+	num_planets 		= { min = 10 max = 20 }
+
+	pc_gas_giant		= { spawn_odds = 0.35 }
+	pc_desert 		= { spawn_odds = 0 }
+	pc_tropical 		= { spawn_odds = 0 }
+	pc_arid 		= { spawn_odds = 0 }
+	pc_continental 		= { spawn_odds = 0 }
+	pc_ocean 		= { spawn_odds = 0 }
+	pc_tundra 		= { spawn_odds = 0 }
+	pc_arctic 		= { spawn_odds = 0 }
+	pc_gaia			= { spawn_odds = 0 }
+	pc_alpine		= { spawn_odds = 0 }
+	pc_savannah		= { spawn_odds = 0 }
+	pc_shrouded		= { spawn_odds = 0.8 }
+	pc_shielded		= { spawn_odds = 0.25 }
+	pc_infested		= { spawn_odds = 0.5 }
+
+	is_environmental_hazard = yes
+
+	modifier = {
+		ship_disengage_chance_reduction = 0.5
+		ship_emergency_ftl_min_days_mult = 0.5
+	}
+}

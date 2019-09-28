@@ -1,0 +1,75 @@
+AncientThwarting = {
+	on_enabled = {
+	}
+	modifier = {
+		description = AncientThwarting_modifier_desc
+		damage_vs_country_type_TheAncientsReformed_mult = 0.5
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = "AncientNOTREFORMED"
+			NOT = { has_global_flag = AncientReform }
+		}
+	}
+		potential = {
+			is_country_type = default
+		}
+	}
+
+AncientReform = {
+	on_enabled = {		
+	}
+	modifier = {
+		description = AncientReform_modifier_desc
+#		pop_resource_output = 0.22
+		country_produces_mult = 0.2
+		stations_produces_mult = 0.2
+	}
+	potential = {
+		is_country_type = TheAncients
+		custom_tooltip = {
+			fail_text = "AncientTooFast"
+			NOT = { years_passed > 20 }
+		}
+	}
+}
+
+AncientReformsTWO = {
+	on_enabled = {
+	}
+	
+	modifier = {
+		description = AncientReformsTWO_modifier_desc
+		country_unity_produces_mult = 2
+	}
+	potential = {
+		is_country_type = TheAncients
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = "AncientTooFast"
+			NOT = { years_passed > 49 }
+		}
+	}
+}
+
+AncientReformsTHREE = {
+	on_enabled = {
+		hidden_effect = {
+			country_event = { id = HEEGM.4 }
+		}
+	}
+	modifier = {
+	description = AncientReformsTHREE_modifier_desc
+	all_technology_research_speed = 0.25	
+	}
+	potential = {
+		is_country_type = TheAncients
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = "AncientTooFast"
+			NOT = { years_passed > 99 }
+		}
+	}
+}

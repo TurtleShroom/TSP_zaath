@@ -1,0 +1,40 @@
+trait_zaath = {
+	cost = 0
+	initial = no
+	icon = "gfx/interface/icons/traits/trait_primitive.dds"
+	immortal_leaders = yes
+	randomized = no
+	forced_happiness = yes
+	allowed_archetypes = { BIOLOGICAL }
+	opposites = { "trait_extremely_adaptive" "trait_nonadaptive" "trait_adaptive" "trait_robust" }
+	modifier = {
+		pop_environment_tolerance = -0.60
+	}	
+}
+
+trait_Rzaath = {
+	cost = 0
+	initial = no
+	icon = "gfx/interface/icons/traits/trait_primitive.dds"
+	immortal_leaders = yes
+	randomized = no
+	allowed_archetypes = { BIOLOGICAL }
+	opposites = { "trait_extremely_adaptive" "trait_nonadaptive" "trait_adaptive" "trait_robust" }
+	modifier = {
+		pop_environment_tolerance = -0.40
+		army_damage_mult = 0.25
+	}
+}
+
+trait_ZAATHRENOWN = { # Traits cannot do this, but the Additional Traits Mod makes it work with Modifiers
+	cost = 0
+	initial = no
+	immortal_leaders = yes
+	randomized = no
+	allowed_archetypes = { BIOLOGICAL }
+#	modifier = {
+#		ship_fire_rate_mult = 0.15
+#		ship_evasion_mult = 0.05
+#		army_morale = 2
+#	}
+}

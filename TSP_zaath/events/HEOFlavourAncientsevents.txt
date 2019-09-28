@@ -1,0 +1,593 @@
+namespace = TSP_HEO_flavor_ancient_events
+
+# Zaath Fleet One Ancients A - Initial Movement, from "CARA.1000"
+fleet_event = {
+	id = TSP_HEO_flavor_ancient_events.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		owner = {
+			is_country = event_target:AncientA
+		}
+		owner = { is_ai = yes }
+	}
+
+	immediate = {
+		# Reset any missed flags
+		if = {
+			limit = {
+				any_system = {
+					any_system_planet = { has_planet_flag = zaath_fleet1_capital_destination }
+				}
+			}
+			every_planet = {
+				limit = { has_planet_flag = zaath_fleet1_capital_destination }
+				remove_planet_flag = zaath_fleet1_capital_destination
+			}
+			log = "ERROR: ZAATH FLEET ONE ANCIENTS A HAD CAPITALS YET TO VISIT, RESET SUCCESSFUL"
+		}
+
+		# Roughly determine number of empires
+		# Decide number of capitals to visit
+		if = { # >= 30 countries exist
+			limit = {
+				owner = {
+					count_country = {
+						limit = { is_country_type = default }
+						count > 30
+					}
+				}
+			}
+			log = "ZAATH FLEET ONE ANCIENTS A: thirty or more countries found, call TWENTY"
+			# Flag 20 capitals to visit
+			while = {
+				count = 20
+				random_playable_country = {
+					limit = {
+						capital_scope = {
+							NOT = { has_planet_flag = zaath_fleet1_capital_destination }
+						}
+					}
+					capital_scope = {
+						set_planet_flag = zaath_fleet1_capital_destination
+						log = "ZAATH FLEET ONE ANCIENTS A: on our way to Capital [this.GetName]!"
+					}
+				}
+			}
+		}
+		else_if = { # >=15 countries exist
+			limit = {				
+				owner = {
+					count_country = {
+						limit = { is_country_type = default }
+						count > 14
+					}
+				}
+			}
+			log = "ZAATH FLEET ONE: between fifteen and thirty countries found, call FOURTEEN"
+			# Flag 10 capitals to visit
+			while = {
+				count = 14
+				random_playable_country = {
+					limit = {
+						capital_scope = {
+							NOT = { has_planet_flag = zaath_fleet1_capital_destination }
+						}
+					}
+					capital_scope = {
+						set_planet_flag = zaath_fleet1_capital_destination
+						log = "ZAATH FLEET ONE ANCIENTS A: on our way to Capital [this.GetName]!"
+					}
+				}
+			}
+		}
+		else_if = { # >12 countries exist
+			limit = {
+				owner = {
+					count_country = {
+						limit = { is_country_type = default }
+						count > 11
+					}
+				}
+			}
+			# flag 4 capitals to visit
+			log = "ZAATH FLEET ONE ANCIENTS A: between twelve and fifteen countries found, call TEN"
+			while = {
+				count = 10
+				random_playable_country = {
+					limit = {
+						capital_scope = {
+							NOT = { has_planet_flag = zaath_fleet1_capital_destination }
+						}
+					}
+					capital_scope = {
+						set_planet_flag = zaath_fleet1_capital_destination
+						log = "ZAATH FLEET ONE ANCIENTS A: on our way to Capital [this.GetName]!"
+					}
+				}
+			}
+		}
+		else_if = { # >= 9 countries exist
+			limit = {
+				owner = {
+					count_country = {
+						limit = { is_country_type = default }
+						count > 8
+					}
+				}
+			}
+			# flag 3 capitals to visit
+			log = "ZAATH FLEET ONE ANCIENTS A: between nine and twelve countries found, call SIX"
+			while = {
+				count = 6
+				random_playable_country = {
+					limit = {
+						capital_scope = {
+							NOT = { has_planet_flag = zaath_fleet1_capital_destination }
+						}
+					}
+					capital_scope = {
+						set_planet_flag = zaath_fleet1_capital_destination
+						log = "ZAATH FLEET ONE ANCIENTS A: on our way to Capital [this.GetName]!"
+					}
+				}
+			}
+		}
+		else_if = { # >=6 countries exist
+			limit = {
+				owner = {
+					count_country = {
+						limit = { is_country_type = default }
+						count > 5
+					}
+				}
+			}
+			# flag 2 capitals to visit
+			log = "ZAATH FLEET ONE ANCIENTS A: between five and nine countries found, call FOUR"
+			while = {
+				count = 4
+				random_playable_country = {
+					limit = {
+						capital_scope = {
+							NOT = { has_planet_flag = zaath_fleet1_capital_destination }
+						}
+					}
+					capital_scope = {
+						set_planet_flag = zaath_fleet1_capital_destination
+						log = "ZAATH FLEET ONE ANCIENTS A: on our way to Capital [this.GetName]!"
+					}
+				}
+			}
+		}
+		else = {
+			# flag 1 capital to visit
+			log = "ERROR: ZAATH FLEET ONE ANCIENTS A HAS ONLY FOUND ONE NATION! CALLING ONE."
+			random_playable_country = {
+				limit = {
+					capital_scope = {
+						NOT = { has_planet_flag = zaath_fleet1_capital_destination }
+					}
+				}
+				capital_scope = {
+					set_planet_flag = zaath_fleet1_capital_destination
+					log = "ZAATH FLEET ONE ANCIENTS A: on our way to [this.GetName]! This is the only country eligible!"
+				}
+			}
+		}
+
+		solar_system = {
+			closest_system = {
+				limit = {
+					any_system_planet = { has_planet_flag = zaath_fleet1_capital_destination }
+				}
+				random_system_planet = {
+					limit = { has_planet_flag = zaath_fleet1_capital_destination }
+					save_event_target_as = zaath_fleet1_next_capital_destination
+				}
+				root = {
+					auto_move_to_planet = {
+						target = event_target:TSP_zaath_return_zone
+						clear_auto_move_on_arrival = no
+						arrival_effect = zaath_fleet1_continue_journey
+					}
+				}
+			}
+		}
+	}
+}
+
+
+# Zaath Fleet Two Ancients B - Initial Movement, from "CARA.2000"
+fleet_event = {
+	id = TSP_HEO_flavor_ancient_events.2
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		owner = {
+			is_country = event_target:AncientB
+		}
+		owner = { is_ai = yes }
+	}
+
+	immediate = {
+		# Reset any missed flags
+		if = {
+			limit = {
+				any_system = {
+					any_system_planet = { has_planet_flag = zaath_fleet2_capital_destination }
+				}
+			}
+			every_planet = {
+				limit = { has_planet_flag = zaath_fleet2_capital_destination }
+				remove_planet_flag = zaath_fleet2_capital_destination
+			}
+			log = "ERROR: ZAATH FLEET TWO ANCIENTS B HAD CAPITALS YET TO VISIT, RESET SUCCESSFUL"
+		}
+
+		# Roughly determine number of empires
+		# Decide number of capitals to visit
+		if = { # >= 30 countries exist
+			limit = {
+				owner = {
+					count_country = {
+						limit = { is_country_type = default }
+						count > 30
+					}
+				}
+			}
+			log = "ZAATH FLEET TWO ANCIENTS B: thirty or more countries found, call TWENTY"
+			# Flag 20 capitals to visit
+			while = {
+				count = 20
+				random_playable_country = {
+					limit = {
+						capital_scope = {
+							NOT = { has_planet_flag = zaath_fleet2_capital_destination }
+						}
+					}
+					capital_scope = {
+						set_planet_flag = zaath_fleet2_capital_destination
+						log = "ZAATH FLEET TWO ANCIENTS B: on our way to Capital [this.GetName]!"
+					}
+				}
+			}
+		}
+		else_if = { # >=15 countries exist
+			limit = {				
+				owner = {
+					count_country = {
+						limit = { is_country_type = default }
+						count > 14
+					}
+				}
+			}
+			log = "ZAATH FLEET ONE: between fifteen and thirty countries found, call FOURTEEN"
+			# Flag 14 capitals to visit
+			while = {
+				count = 14
+				random_playable_country = {
+					limit = {
+						capital_scope = {
+							NOT = { has_planet_flag = zaath_fleet2_capital_destination }
+						}
+					}
+					capital_scope = {
+						set_planet_flag = zaath_fleet2_capital_destination
+						log = "ZAATH FLEET TWO ANCIENTS B: on our way to Capital [this.GetName]!"
+					}
+				}
+			}
+		}
+		else_if = { # >12 countries exist
+			limit = {
+				owner = {
+					count_country = {
+						limit = { is_country_type = default }
+						count > 11
+					}
+				}
+			}
+			# Flag 10 capitals to visit
+			log = "ZAATH FLEET TWO ANCIENTS B: between twelve and fifteen countries found, call TEN"
+			while = {
+				count = 10
+				random_playable_country = {
+					limit = {
+						capital_scope = {
+							NOT = { has_planet_flag = zaath_fleet2_capital_destination }
+						}
+					}
+					capital_scope = {
+						set_planet_flag = zaath_fleet2_capital_destination
+						log = "ZAATH FLEET TWO ANCIENTS B: on our way to Capital [this.GetName]!"
+					}
+				}
+			}
+		}
+		else_if = { # >= 9 countries exist
+			limit = {
+				owner = {
+					count_country = {
+						limit = { is_country_type = default }
+						count > 8
+					}
+				}
+			}
+			# Flag 6 capitals to visit
+			log = "ZAATH FLEET TWO ANCIENTS B: between nine and twelve countries found, call SIX"
+			while = {
+				count = 6
+				random_playable_country = {
+					limit = {
+						capital_scope = {
+							NOT = { has_planet_flag = zaath_fleet2_capital_destination }
+						}
+					}
+					capital_scope = {
+						set_planet_flag = zaath_fleet2_capital_destination
+						log = "ZAATH FLEET TWO ANCIENTS B: on our way to Capital [this.GetName]!"
+					}
+				}
+			}
+		}
+		else_if = { # >=6 countries exist
+			limit = {
+				owner = {
+					count_country = {
+						limit = { is_country_type = default }
+						count > 5
+					}
+				}
+			}
+			# Flag 2 capitals to visit
+			log = "ZAATH FLEET TWO ANCIENTS B: between five and nine countries found, call FOUR"
+			while = {
+				count = 4
+				random_playable_country = {
+					limit = {
+						capital_scope = {
+							NOT = { has_planet_flag = zaath_fleet2_capital_destination }
+						}
+					}
+					capital_scope = {
+						set_planet_flag = zaath_fleet2_capital_destination
+						log = "ZAATH FLEET TWO ANCIENTS B: on our way to Capital [this.GetName]!"
+					}
+				}
+			}
+		}
+		else = {
+			# Flag 1 capital to visit
+			log = "ERROR: ZAATH FLEET TWO ANCIENTS B HAS ONLY FOUND ONE NATION! CALLING ONE."
+			random_playable_country = {
+				limit = {
+					capital_scope = {
+						NOT = { has_planet_flag = zaath_fleet2_capital_destination }
+					}
+				}
+				capital_scope = {
+					set_planet_flag = zaath_fleet2_capital_destination
+					log = "ZAATH FLEET TWO ANCIENTS B: on our way to [this.GetName]! This is the only country eligible!"
+				}
+			}
+		}
+
+		solar_system = {
+			closest_system = {
+				limit = {
+					any_system_planet = { has_planet_flag = zaath_fleet2_capital_destination }
+				}
+				random_system_planet = {
+					limit = { has_planet_flag = zaath_fleet2_capital_destination }
+					save_event_target_as = zaath_fleet2_next_capital_destination
+				}
+				root = {
+					auto_move_to_planet = {
+						target = event_target:TSP_zaath_return_zone
+						clear_auto_move_on_arrival = no
+						arrival_effect = zaath_fleet2_continue_journey
+					}
+				}
+			}
+		}
+	}
+}
+
+# Zaath Fleet Three Ancients C - Initial Movement, from "CARA.3000"
+fleet_event = {
+	id = TSP_HEO_flavor_ancient_events.3
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		owner = {
+			is_country = event_target:AncientC
+		}
+		owner = { is_ai = yes }
+	}
+
+	immediate = {
+		# Reset any missed flags
+		if = {
+			limit = {
+				any_system = {
+					any_system_planet = { has_planet_flag = zaath_fleet3_capital_destination }
+				}
+			}
+			every_planet = {
+				limit = { has_planet_flag = zaath_fleet3_capital_destination }
+				remove_planet_flag = zaath_fleet3_capital_destination
+			}
+			log = "ERROR: ZAATH FLEET THREE ANCIENTS C HAD CAPITALS YET TO VISIT, RESET SUCCESSFUL"
+		}
+
+		# Roughly determine number of empires
+		# Decide number of capitals to visit
+		if = { # >= 30 countries exist
+			limit = {
+				owner = {
+					count_country = {
+						limit = { is_country_type = default }
+						count > 30
+					}
+				}
+			}
+			log = "ZAATH FLEET THREE ANCIENTS C: thirty or more countries found, call TWENTY"
+			# Flag 20 capitals to visit
+			while = {
+				count = 20
+				random_playable_country = {
+					limit = {
+						capital_scope = {
+							NOT = { has_planet_flag = zaath_fleet3_capital_destination }
+						}
+					}
+					capital_scope = {
+						set_planet_flag = zaath_fleet3_capital_destination
+						log = "ZAATH FLEET THREE ANCIENTS C: on our way to Capital [this.GetName]!"
+					}
+				}
+			}
+		}
+		else_if = { # >=15 countries exist
+			limit = {				
+				owner = {
+					count_country = {
+						limit = { is_country_type = default }
+						count > 14
+					}
+				}
+			}
+			log = "ZAATH FLEET THREE ANCIENTS C: between fifteen and thirty countries found, call FOURTEEN"
+			# Flag 14 capitals to visit
+			while = {
+				count = 14
+				random_playable_country = {
+					limit = {
+						capital_scope = {
+							NOT = { has_planet_flag = zaath_fleet3_capital_destination }
+						}
+					}
+					capital_scope = {
+						set_planet_flag = zaath_fleet3_capital_destination
+						log = "ZAATH FLEET THREE ANCIENTS C: on our way to Capital [this.GetName]!"
+					}
+				}
+			}
+		}
+		else_if = { # >12 countries exist
+			limit = {
+				owner = {
+					count_country = {
+						limit = { is_country_type = default }
+						count > 11
+					}
+				}
+			}
+			# Flag 10 capitals to visit
+			log = "ZAATH FLEET THREE ANCIENTS C: between twelve and fifteen countries found, call TEN"
+			while = {
+				count = 10
+				random_playable_country = {
+					limit = {
+						capital_scope = {
+							NOT = { has_planet_flag = zaath_fleet3_capital_destination }
+						}
+					}
+					capital_scope = {
+						set_planet_flag = zaath_fleet3_capital_destination
+						log = "ZAATH FLEET THREE ANCIENTS C: on our way to Capital [this.GetName]!"
+					}
+				}
+			}
+		}
+		else_if = { # >= 9 countries exist
+			limit = {
+				owner = {
+					count_country = {
+						limit = { is_country_type = default }
+						count > 8
+					}
+				}
+			}
+			# Flag 6 capitals to visit
+			log = "ZAATH FLEET THREE ANCIENTS C: between nine and twelve countries found, call SIX"
+			while = {
+				count = 6
+				random_playable_country = {
+					limit = {
+						capital_scope = {
+							NOT = { has_planet_flag = zaath_fleet3_capital_destination }
+						}
+					}
+					capital_scope = {
+						set_planet_flag = zaath_fleet3_capital_destination
+						log = "ZAATH FLEET THREE ANCIENTS C: on our way to Capital [this.GetName]!"
+					}
+				}
+			}
+		}
+		else_if = { # >= 6 countries exist
+			limit = {
+				owner = {
+					count_country = {
+						limit = { is_country_type = default }
+						count > 5
+					}
+				}
+			}
+			# Flag 4 capitals to visit
+			log = "ZAATH FLEET THREE ANCIENTS C: between five and nine countries found, call FOUR"
+			while = {
+				count = 4
+				random_playable_country = {
+					limit = {
+						capital_scope = {
+							NOT = { has_planet_flag = zaath_fleet3_capital_destination }
+						}
+					}
+					capital_scope = {
+						set_planet_flag = zaath_fleet3_capital_destination
+						log = "ZAATH FLEET THREE ANCIENTS C: on our way to Capital [this.GetName]!"
+					}
+				}
+			}
+		}
+		else = {
+			# Flag 1 capital to visit
+			log = "ERROR: ZAATH FLEET THREE ANCIENTS C HAS ONLY FOUND ONE NATION! CALLING ONE."
+			random_playable_country = {
+				limit = {
+					capital_scope = {
+						NOT = { has_planet_flag = zaath_fleet3_capital_destination }
+					}
+				}
+				capital_scope = {
+					set_planet_flag = zaath_fleet3_capital_destination
+					log = "ZAATH FLEET THREE ANCIENTS C: on our way to [this.GetName]! This is the only country eligible!"
+				}
+			}
+		}
+
+		solar_system = {
+			closest_system = {
+				limit = {
+					any_system_planet = { has_planet_flag = zaath_fleet3_capital_destination }
+				}
+				random_system_planet = {
+					limit = { has_planet_flag = zaath_fleet3_capital_destination }
+					save_event_target_as = zaath_fleet3_next_capital_destination
+				}
+				root = {
+					auto_move_to_planet = {
+						target = event_target:TSP_zaath_return_zone
+						clear_auto_move_on_arrival = no
+						arrival_effect = zaath_fleet3_continue_journey
+					}
+				}
+			}
+		}
+	}
+}

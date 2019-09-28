@@ -1,0 +1,225 @@
+# These four Events are for trade in the Caravans
+
+#cara_home_return = {
+#	hidden_effect = {
+#		#remove_country_flag = cara_home_convo
+#		# commented out for reworked cara.100 trigger
+#		country_event = { id = cara.100 }
+#	}
+#}
+#
+#zaath_fleet1_return = {
+#	hidden_effect = {
+#		country_event = { id = cara.1100 }
+#	}
+#}
+#
+#zaath_fleet2_return = {
+#	hidden_effect = {
+#		country_event = { id = cara.2100 }
+#	}
+#}
+#
+#zaath_fleet3_return = {
+#	hidden_effect = {
+#		country_event = { id = cara.3100 }
+#	}
+#}
+
+# This = owner of fleet
+# From = fleet
+# FromFrom = planet (if any)
+zaath_fleet1_continue_journey = {
+	# Visited called capital planet
+	log = "ZAATH FLEET ONE ANCIENTS A is now moving to the next planet"
+	from = {
+		remove_planet_flag = zaath_fleet1_capital_destination
+		log = "ZAATH FLEET ONE ANCIENTS A has reached a called destination!"
+	}
+	# Move on to next capital
+	if = {
+		limit = {
+			any_system = {
+				NOT = { is_same_value = solar_system }
+				any_system_planet = { has_planet_flag = zaath_fleet1_capital_destination }
+			}
+		}
+		solar_system = {
+			closest_system = {
+				min_steps = 1
+				limit = {
+					any_system_planet = { has_planet_flag = zaath_fleet1_capital_destination }
+				}
+				random_system_planet = {
+					limit = { has_planet_flag = zaath_fleet1_capital_destination }
+					save_event_target_as = zaath_fleet1_next_capital_destination
+					log = "ZAATH FLEET ONE ANCIENTS A: calling next destination"
+				}
+			}
+		}
+		auto_move_to_planet = {
+			target = event_target:zaath_fleet1_next_capital_destination
+			clear_auto_move_on_arrival = no
+			arrival_effect = zaath_fleet1_continue_journey
+		}
+		log = "FLEET ONE ANCIENTS A: Run Zaath, run!"
+	}
+	# Or return home
+	else_if = {
+		limit = { exists = event_target:TSP_zaath_return_zone }
+		auto_move_to_planet = {
+			target = event_target:TSP_zaath_return_zone
+			clear_auto_move_on_arrival = no
+			arrival_effect = zaath_fleet1_reset_journey
+		}
+		log = "ZAATH FLEET ONE ANCIENTS A: back to Spawn Point"
+	}
+	else = {
+		random_planet = { save_event_target_as = zaath_temporary_fleet1_destination }
+		auto_move_to_planet = {
+			target = event_target:TSP_zaath_return_zone
+			clear_auto_move_on_arrival = no
+			arrival_effect = zaath_fleet1_continue_journey
+		}
+		log = "ERROR IN ZAATH SPAWN STAR: ZAATH FLEET ONE ANCIENTS A, DETOUR TO PLANET!"
+	}
+}
+
+# This = owner of fleet
+# From = fleet
+# FromFrom = planet (if any)
+zaath_fleet1_reset_journey = {
+	fleet_event = { id = TSP_HEO_flavor_ancient_events.1 days = 30 }
+}
+
+# This = owner of fleet
+# From = fleet
+# FromFrom = planet (if any)
+zaath_fleet2_continue_journey = {
+	# Untag capital planet
+	log = "ZAATH FLEET TWO ANCIENTS B is now moving to the next planet"
+	from = {
+		remove_planet_flag = zaath_fleet2_capital_destination
+		log = "ZAATH FLEET TWO has reached a called destination!"
+	}
+	# Move on to next capital
+	if = {
+		limit = {
+			any_system = {
+				NOT = { is_same_value = solar_system }
+				any_system_planet = { has_planet_flag = zaath_fleet2_capital_destination }
+			}
+		}
+		solar_system = {
+			closest_system = {
+				min_steps = 1
+				limit = {
+					any_system_planet = { has_planet_flag = zaath_fleet2_capital_destination }
+				}
+				random_system_planet = {
+					limit = { has_planet_flag = zaath_fleet2_capital_destination }
+					save_event_target_as = zaath_fleet2_next_capital_destination
+					log = "ZAATH FLEET TWO ANCIENTS B: calling next destination"
+				}
+			}
+		}
+		auto_move_to_planet = {
+			target = event_target:zaath_fleet2_next_capital_destination
+			clear_auto_move_on_arrival = no
+			arrival_effect = zaath_fleet2_continue_journey
+		}
+		log = "FLEET TWO ANCIENTS B: run Zaath, run!"
+	}
+	# Or return home
+	else_if = {
+		limit = { exists = event_target:TSP_zaath_return_zone }
+		auto_move_to_planet = {
+			target = event_target:TSP_zaath_return_zone
+			clear_auto_move_on_arrival = no
+			arrival_effect = zaath_fleet2_reset_journey
+		}
+		log = "ZAATH FLEET TWO ANCIENTS B: back to Spawn Point"
+	}
+	else = {
+		random_planet = { save_event_target_as = zaath_temporary_fleet2_destination }
+		auto_move_to_planet = {
+			target = event_target:TSP_zaath_return_zone
+			clear_auto_move_on_arrival = no
+			arrival_effect = zaath_fleet2_continue_journey
+		}
+		log = "ERROR IN ZAATH SPAWN STAR: ZAATH FLEET TWO ANCIENTS B, DETOUR TO PLANET!"
+	}
+}
+
+# This = owner of fleet
+# From = fleet
+# FromFrom = planet (if any)
+zaath_fleet2_reset_journey = {
+	fleet_event = { id = TSP_HEO_flavor_ancient_events.2 days = 30 }
+}
+
+# This = owner of fleet
+# From = fleet
+# FromFrom = planet (if any)
+zaath_fleet3_continue_journey = {
+	# Untag capital planet
+	log = "ZAATH FLEET THREE ANCIENTS C is now moving to the next planet"
+	from = {
+		remove_planet_flag = zaath_fleet3_capital_destination
+		log = "ZAATH FLEET TWO has reached a called destination!"
+	}
+	# Move on to next capital
+	if = {
+		limit = {
+			any_system = {
+				NOT = { is_same_value = solar_system }
+				any_system_planet = { has_planet_flag = zaath_fleet3_capital_destination }
+			}
+		}
+		solar_system = {
+			closest_system = {
+				min_steps = 1
+				limit = {
+					any_system_planet = { has_planet_flag = zaath_fleet3_capital_destination }
+				}
+				random_system_planet = {
+					limit = { has_planet_flag = zaath_fleet3_capital_destination }
+					save_event_target_as = zaath_fleet3_next_capital_destination
+					log = "ZAATH FLEET THREE ANCIENTS C: calling next destination"
+				}
+			}
+		}
+		auto_move_to_planet = {
+			target = event_target:zaath_fleet3_next_capital_destination
+			clear_auto_move_on_arrival = no
+			arrival_effect = zaath_fleet3_continue_journey
+		}
+		log = "FLEET THREE ANCIENTS C: run Zaath, run!"
+	}
+	# Or return home
+	else_if = {
+		limit = { exists = event_target:TSP_zaath_return_zone }
+		auto_move_to_planet = {
+			target = event_target:TSP_zaath_return_zone
+			clear_auto_move_on_arrival = no
+			arrival_effect = zaath_fleet3_reset_journey
+		}
+		log = "ZAATH FLEET THREE ANCIENTS C: back to Spawn Point"
+	}
+	else = {
+		random_planet = { save_event_target_as = zaath_temporary_fleet3_destination }
+		auto_move_to_planet = {
+			target = event_target:TSP_zaath_return_zone
+			clear_auto_move_on_arrival = no
+			arrival_effect = zaath_fleet3_continue_journey
+		}
+		log = "ERROR IN ZAATH SPAWN STAR: ZAATH FLEET THREE ANCIENTS C, DETOUR TO PLANET!"
+	}
+}
+
+# This = owner of fleet
+# From = fleet
+# FromFrom = planet (if any)
+zaath_fleet3_reset_journey = {
+	fleet_event = { id = TSP_HEO_flavor_ancient_events.3 days = 30 }
+}

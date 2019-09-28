@@ -1,0 +1,3 @@
+﻿l_english:
+ zz_gai_dummy_building:0 "Dummy AI building"
+ zz_gai_dummy_building_desc:0 "This building prevents the AI from building useless buildings that it doesn't have the pop to run."

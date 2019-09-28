@@ -1,0 +1,137 @@
+TheAncients = {
+	counts_for_victory = no
+	pop_growth = yes
+	playable = yes
+	piracy_risk = no
+	shuffle_pop_ethos = no
+	needs_survey = no
+	show_in_contacts_list = yes
+	minimalist_contacts_list_profile = yes
+	custom_diplomacy = yes
+	has_complete_sensor = yes
+	ship_disengagement = yes
+	army_disengagement = yes
+	share_survey_data = no
+	uses_special_buildables = yes
+	observable = yes
+
+	sub_title = "COUNTRY_ANCIENT"
+	sub_title_desc = "COUNTRY_ANCIENT_DESC"
+
+	destroys_starbases = no
+	fallen_empire = yes
+	
+	faction = {
+		show_borders_in_us = no
+		hostile_when_attacked = yes
+		needs_border_access = no
+		generate_borders = yes
+		needs_colony = no
+	}
+	
+	ai = {
+		enabled = no
+		colonizer = no
+		internal_policies = no
+		modification = no
+		government = no
+		starbase_upgrade = no
+		limited_construction = yes
+		traditions = yes
+		follow = yes
+		modules = {
+			military_minister_module
+			foreign_minister_module
+			interior_minister_module
+		}
+	}
+	modules = {
+		standard_event_module = {}
+		standard_economy_module = {}
+		standard_leader_module = {}
+		exclusive_diplomacy_module = {
+			contact_rule = always
+		}
+		all_technology_module = {}
+	}
+	
+	resources = {
+		category = country_base
+		produces = {
+			unity = 10
+			influence = 1
+			Zdecadence = 0.3
+			ZPsionicPower = 1
+		}
+	}
+}
+
+TheAncientsReformed = {
+	counts_for_victory = yes
+	pop_growth = yes
+	playable = yes
+	piracy_risk = no
+	shuffle_pop_ethos = no
+	needs_survey = no
+	mid_game_crisis = yes
+	show_in_contacts_list = yes
+	minimalist_contacts_list_profile = yes
+	ship_disengagement = yes
+	army_disengagement = no
+	share_survey_data = no
+	can_own_empty_planets = yes
+	uses_special_buildables = yes
+	observable = yes
+
+	colonizing_title = "COLONIZING_PLANET_REFORMEDANCIENT"
+	colonizing_desc = "PLANET_VIEW_UNDER_COLONIZATION_REFORMEDANCIENT_DESC"
+	sub_title = "COUNTRY_REFORMEDANCIENT"
+	sub_title_desc = "COUNTRY_REFORMEDANCIENT_DESC"
+
+	destroys_starbases = no
+	custom_starbase = ZaathGuardFort
+	awakened_fallen_empire = yes
+	
+	faction = {
+		hostile = yes
+		needs_border_access = no
+		generate_borders = yes
+		needs_colony = no
+	}
+	
+	custom_diplomacy = yes
+	
+	ai = {
+		enabled = no
+		colonizer = no
+		internal_policies = no
+		modification = yes
+		government = no
+		starbase_upgrade = no
+		limited_construction = yes
+		traditions = yes
+		follow = yes
+		modules = {
+			military_minister_module
+			foreign_minister_module
+			interior_minister_module
+		}
+	}
+	modules = {
+		standard_event_module = {}
+		standard_economy_module = {}
+		standard_leader_module = {}
+		all_technology_module = {}
+		standard_species_rights_module = {}
+		standard_diplomacy_module = {}
+	}
+	resources = {
+		category = country_base
+		produces = {
+			unity = 20
+			influence = 2
+			Zdecadence = 1
+			ZPsionicPower = 5
+		}
+	}
+}

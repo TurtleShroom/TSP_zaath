@@ -1,0 +1,48 @@
+invitecoalition = {
+	length = 1
+	potential = {
+		is_country_type = default
+		is_at_war = yes
+		using_war_goal = {
+			type = wg_warmongerattack
+			owner = this
+		}
+		always = no
+	}
+	allow = {
+		NOT = {
+			has_country_flag = coalitioninvited
+		}
+		always = no
+	}
+	effect = {
+#		country_event = {
+#			id = 
+#		}
+	}
+}
+
+selfcomms = {
+	length = 1
+	potential = {
+		OR = {
+			is_country_type = TheAncients
+			is_country_type = TheAncientsReformed
+			has_authority = auth_ancient
+			has_authority = auth_reformedancient
+		}
+	}
+	allow = {
+		NOT = { has_country_flag = self_communication_to_zaath }
+	}
+	effect = {
+		fleet_event = { id = zaathcomms.1 }
+		set_timed_country_flag = {
+			flag = self_communication_to_zaath
+			days = 30
+		}
+	}
+	ai_weight = {
+		weight = 1
+	}
+}

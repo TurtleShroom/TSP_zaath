@@ -1,0 +1,440 @@
+#Minerals
+
+MGiftS = {
+	if = { limit = { years_passed < 10 }
+		add_resource = { minerals = 50 }
+	}
+	if = { limit = { years_passed > 10  NOT = { years_passed < 20 } }
+		add_resource = { minerals = 100 }
+	}
+	if = { limit = { years_passed > 20  NOT = { years_passed < 30 } }
+		add_resource = { minerals = 150 }
+	}
+	if = { limit = { years_passed > 30  NOT = { years_passed < 40 } }
+		add_resource = { minerals = 200 }
+	}
+	if = { limit = { years_passed > 40  NOT = { years_passed < 50 } }
+		add_resource = { minerals = 250 }
+	}
+	if = { limit = { years_passed > 50  NOT = { years_passed < 60 } }
+		add_resource = { minerals = 300 }
+	}
+	if = { limit = { years_passed > 60  NOT = { years_passed < 70 } }
+		add_resource = { minerals = 350 }
+	}
+	if = { limit = { years_passed > 70  NOT = { years_passed < 80 } }
+		add_resource = { minerals = 400 }
+	}
+	if = { limit = { years_passed > 80  NOT = { years_passed < 90 } }
+		add_resource = { minerals = 450 }
+	}
+	if = { limit = { years_passed > 90  NOT = { years_passed < 100 } }
+		add_resource = { minerals = 500 }
+	}
+	if = { limit = { years_passed > 100  NOT = { years_passed < 110 } }
+		add_resource = { minerals = 550 }
+	}
+}
+
+MGiftM = {
+	if = { limit = { years_passed < 10 }
+		add_resource = { minerals = 150 }
+	}
+	if = { limit = { years_passed > 10  NOT = { years_passed < 20 } }
+		add_resource = { minerals = 250 }
+	}
+	if = { limit = { years_passed > 20  NOT = { years_passed < 30 } }
+		add_resource = { minerals = 350 }
+	}
+	if = { limit = { years_passed > 30  NOT = { years_passed < 40 } }
+		add_resource = { minerals = 450 }
+	}
+	if = { limit = { years_passed > 40  NOT = { years_passed < 50 } }
+		add_resource = { minerals = 550 }
+	}
+	if = { limit = { years_passed > 50  NOT = { years_passed < 60 } }
+		add_resource = { minerals = 650 }
+	}
+	if = { limit = { years_passed > 60  NOT = { years_passed < 70 } }
+		add_resource = { minerals = 750 }
+	}
+	if = { limit = { years_passed > 70  NOT = { years_passed < 80 } }
+		add_resource = { minerals = 850 }
+	}
+	if = { limit = { years_passed > 80  NOT = { years_passed < 90 } }
+		add_resource = { minerals = 950 }
+	}
+	if = { limit = { years_passed > 90  NOT = { years_passed < 100 } }
+		add_resource = { minerals = 1050 }
+	}
+	if = { limit = { years_passed > 100  NOT = { years_passed < 110 } }
+		add_resource = { minerals = 1150 }
+	}
+}
+
+MGiftL = {
+	if = { limit = { years_passed < 10 }
+		add_resource = { minerals = 200 }
+	}
+	if = { limit = { years_passed > 10  NOT = { years_passed < 20 } }
+		add_resource = { minerals = 400 }
+	}
+	if = { limit = { years_passed > 20  NOT = { years_passed < 30 } }
+		add_resource = { minerals = 600 }
+	}
+	if = { limit = { years_passed > 30  NOT = { years_passed < 40 } }
+		add_resource = { minerals = 800 }
+	}
+	if = { limit = { years_passed > 40  NOT = { years_passed < 50 } }
+		add_resource = { minerals = 1000 }
+	}
+	if = { limit = { years_passed > 50  NOT = { years_passed < 60 } }
+		add_resource = { minerals = 1200 }
+	}
+	if = { limit = { years_passed > 60  NOT = { years_passed < 70 } }
+		add_resource = { minerals = 1400 }
+	}
+	if = { limit = { years_passed > 70  NOT = { years_passed < 80 } }
+		add_resource = { minerals = 1600 }
+	}
+	if = { limit = { years_passed > 80  NOT = { years_passed < 90 } }
+		add_resource = { minerals = 1800 }
+	}
+	if = { limit = { years_passed > 90  NOT = { years_passed < 100 } }
+		add_resource = { minerals = 2000 }
+	}
+	if = { limit = { years_passed > 100  NOT = { years_passed < 110 } }
+		add_resource = { minerals = 2200 }
+	}
+}
+
+#Energy
+
+EGiftS = {
+	if = { limit = { years_passed < 10 }
+		add_resource = { energy = 50 }
+	}
+	if = { limit = { years_passed > 10  NOT = { years_passed < 20 } }
+		add_resource = { energy = 100 }
+	}
+	if = { limit = { years_passed > 20  NOT = { years_passed < 30 } }
+		add_resource = { energy = 150 }
+	}
+	if = { limit = { years_passed > 30  NOT = { years_passed < 40 } }
+		add_resource = { energy = 200 }
+	}
+	if = { limit = { years_passed > 40  NOT = { years_passed < 50 } }
+		add_resource = { energy = 250 }
+	}
+	if = { limit = { years_passed > 50  NOT = { years_passed < 60 } }
+		add_resource = { energy = 300 }
+	}
+	if = { limit = { years_passed > 60  NOT = { years_passed < 70 } }
+		add_resource = { energy = 350 }
+	}
+	if = { limit = { years_passed > 70  NOT = { years_passed < 80 } }
+		add_resource = { energy = 400 }
+	}
+	if = { limit = { years_passed > 80  NOT = { years_passed < 90 } }
+		add_resource = { energy = 450 }
+	}
+	if = { limit = { years_passed > 90  NOT = { years_passed < 100 } }
+		add_resource = { energy = 500 }
+	}
+	if = { limit = { years_passed > 100  NOT = { years_passed < 110 } }
+		add_resource = { energy = 550 }
+	}
+}
+
+EGiftM = {
+	if = { limit = { years_passed < 10 }
+		add_resource = { energy = 150 }
+	}
+	if = { limit = { years_passed > 10  NOT = { years_passed < 20 } }
+		add_resource = { energy = 250 }
+	}
+	if = { limit = { years_passed > 20  NOT = { years_passed < 30 } }
+		add_resource = { energy = 350 }
+	}
+	if = { limit = { years_passed > 30  NOT = { years_passed < 40 } }
+		add_resource = { energy = 450 }
+	}
+	if = { limit = { years_passed > 40  NOT = { years_passed < 50 } }
+		add_resource = { energy = 550 }
+	}
+	if = { limit = { years_passed > 50  NOT = { years_passed < 60 } }
+		add_resource = { energy = 650 }
+	}
+	if = { limit = { years_passed > 60  NOT = { years_passed < 70 } }
+		add_resource = { energy = 750 }
+	}
+	if = { limit = { years_passed > 70  NOT = { years_passed < 80 } }
+		add_resource = { energy = 850 }
+	}
+	if = { limit = { years_passed > 80  NOT = { years_passed < 90 } }
+		add_resource = { energy = 950 }
+	}
+	if = { limit = { years_passed > 90  NOT = { years_passed < 100 } }
+		add_resource = { energy = 1050 }
+	}
+	if = { limit = { years_passed > 100  NOT = { years_passed < 110 } }
+		add_resource = { energy = 1150 }
+	}
+}
+
+EGiftL = {
+	if = { limit = { years_passed < 10 }
+		add_resource = { energy = 200 }
+	}
+	if = { limit = { years_passed > 10  NOT = { years_passed < 20 } }
+		add_resource = { energy = 400 }
+	}
+	if = { limit = { years_passed > 20  NOT = { years_passed < 30 } }
+		add_resource = { energy = 600 }
+	}
+	if = { limit = { years_passed > 30  NOT = { years_passed < 40 } }
+			add_resource = { energy = 800 }
+	}
+	if = { limit = { years_passed > 40  NOT = { years_passed < 50 } }
+		add_resource = { energy = 1000 }
+	}
+	if = { limit = { years_passed > 50  NOT = { years_passed < 60 } }
+		add_resource = { energy = 1200 }
+	}
+	if = { limit = { years_passed > 60  NOT = { years_passed < 70 } }
+		add_resource = { energy = 1400 }
+	}
+	if = { limit = { years_passed > 70  NOT = { years_passed < 80 } }
+		add_resource = { energy = 1600 }
+	}
+	if = { limit = { years_passed > 80  NOT = { years_passed < 90 } }
+		add_resource = { energy = 1800 }
+	}
+	if = { limit = { years_passed > 90  NOT = { years_passed < 100 } }
+		add_resource = { energy = 2000 }
+	}
+	if = { limit = { years_passed > 100  NOT = { years_passed < 110 } }
+		add_resource = { energy = 2200 }
+	}
+}
+
+
+#Food
+
+FGiftS = {
+	if = { limit = { years_passed < 10 }
+		add_resource = { food = 50 }
+	}
+	if = { limit = { years_passed > 10  NOT = { years_passed < 20 } }
+		add_resource = { food = 100 }
+	}
+	if = { limit = { years_passed > 20  NOT = { years_passed < 30 } }
+		add_resource = { food = 150 }
+	}
+	if = { limit = { years_passed > 30  NOT = { years_passed < 40 } }
+		add_resource = { food = 200 }
+	}
+	if = { limit = { years_passed > 40  NOT = { years_passed < 50 } }
+		add_resource = { food = 250 }
+	}
+	if = { limit = { years_passed > 50  NOT = { years_passed < 60 } }
+		add_resource = { food = 300 }
+	}
+	if = { limit = { years_passed > 60  NOT = { years_passed < 70 } }
+		add_resource = { food = 350 }
+	}
+	if = { limit = { years_passed > 70  NOT = { years_passed < 80 } }
+		add_resource = { food = 400 }
+	}
+	if = { limit = { years_passed > 80  NOT = { years_passed < 90 } }
+		add_resource = { food = 450 }
+	}
+	if = { limit = { years_passed > 90  NOT = { years_passed < 100 } }
+		add_resource = { food = 500 }
+	}
+	if = { limit = { years_passed > 100  NOT = { years_passed < 110 } }
+		add_resource = { food = 550 }
+	}
+}
+
+FGiftM = {
+	if = { limit = { years_passed < 10 }
+		add_resource = { food = 150 }
+	}
+	if = { limit = { years_passed > 10  NOT = { years_passed < 20 } }
+		add_resource = { food = 250 }
+	}
+	if = { limit = { years_passed > 20  NOT = { years_passed < 30 } }
+		add_resource = { food = 350 }
+	}
+	if = { limit = { years_passed > 30  NOT = { years_passed < 40 } }
+		add_resource = { food = 450 }
+	}
+	if = { limit = { years_passed > 40  NOT = { years_passed < 50 } }
+		add_resource = { food = 550 }
+	}
+	if = { limit = { AND = { years_passed > 50  NOT = { years_passed < 60 } } }
+		add_resource = { food = 650 }
+	}
+	if = { limit = { AND = { years_passed > 60  NOT = { years_passed < 70 } } }
+		add_resource = { food = 750 }
+	}
+	if = { limit = { AND = { years_passed > 70  NOT = { years_passed < 80 } } }
+		add_resource = { food = 850 }
+	}
+	if = { limit = { AND = { years_passed > 80  NOT = { years_passed < 90 } } }
+		add_resource = { food = 950 }
+	}
+	if = { limit = { AND = { years_passed > 90  NOT = { years_passed < 100 } } }
+		add_resource = { food = 1050 }
+	}
+	if = { limit = { AND = { years_passed > 100  NOT = { years_passed < 110 } } }
+		add_resource = { food = 1150 }
+	}
+}
+
+FGiftL = {
+	if = { limit = { years_passed < 10 }
+		add_resource = { food = 200 }
+	}
+	if = { limit = { AND = { years_passed > 10  NOT = { years_passed < 20 } } }
+		add_resource = { food = 400 }
+	}
+	if = { limit = { AND = { years_passed > 20  NOT = { years_passed < 30 } } }
+		add_resource = { food = 600 }
+	}
+	if = { limit = { AND = { years_passed > 30  NOT = { years_passed < 40 } } }
+		add_resource = { food = 800 }
+	}
+	if = { limit = { AND = { years_passed > 40  NOT = { years_passed < 50 } } }
+		add_resource = { food = 1000 }
+	}
+	if = { limit = { AND = { years_passed > 50  NOT = { years_passed < 60 } } }
+		add_resource = { food = 1200 }
+	}
+	if = { limit = { AND = { years_passed > 60  NOT = { years_passed < 70 } } }
+		add_resource = { food = 1400 }
+	}
+	if = { limit = { AND = { years_passed > 70  NOT = { years_passed < 80 } } }
+		add_resource = { food = 1600 }
+	}
+	if = { limit = { AND = { years_passed > 80  NOT = { years_passed < 90 } } }
+		add_resource = { food = 1800 }
+	}
+	if = { limit = { AND = { years_passed > 90  NOT = { years_passed < 100 } } }
+		add_resource = { food = 2000 }
+	}
+	if = { limit = { AND = { years_passed > 100  NOT = { years_passed < 110 } } }
+		add_resource = { food = 2200 }
+	}
+}
+
+#Alloys
+
+AGiftS = {
+	if = { limit = { years_passed < 10 }
+		add_resource = { alloys = 25 }
+	}
+	if = { limit = { AND = { years_passed > 10  NOT = { years_passed < 20 } } }
+		add_resource = { alloys = 50 }
+	}
+	if = { limit = { AND = { years_passed > 20  NOT = { years_passed < 30 } } }
+		add_resource = { alloys	= 75 }
+	}
+	if = { limit = { AND = { years_passed > 30  NOT = { years_passed < 40 } } }
+		add_resource = { alloys = 100 }
+	}
+	if = { limit = { AND = { years_passed > 40  NOT = { years_passed < 50 } } }
+		add_resource = { alloys = 150 }
+	}
+	if = { limit = { AND = { years_passed > 50  NOT = { years_passed < 60 } } }
+		add_resource = { alloys = 200 }
+	}
+	if = { limit = { AND = { years_passed > 60  NOT = { years_passed < 70 } } }
+		add_resource = { alloys = 250 }
+	}
+	if = { limit = { AND = { years_passed > 70  NOT = { years_passed < 80 } } }
+		add_resource = { alloys = 300 }
+	}
+	if = { limit = { AND = { years_passed > 80  NOT = { years_passed < 90 } } }
+		add_resource = { alloys = 350 }
+	}
+	if = { limit = { AND = { years_passed > 90  NOT = { years_passed < 100 } } }
+		add_resource = { alloys = 400 }
+	}
+	if = { limit = { AND = { years_passed > 100  NOT = { years_passed < 110 } } }
+		add_resource = { alloys = 450 }
+	}
+}
+
+AGiftM = {
+	if = { limit = { years_passed < 10 }
+		add_resource = { alloys = 100 }
+	}
+	if = { limit = { AND = { years_passed > 10  NOT = { years_passed < 20 } } }
+		add_resource = { alloys = 150 }
+	}
+	if = { limit = { AND = { years_passed > 20  NOT = { years_passed < 30 } } }
+		add_resource = { alloys = 200 }
+	}
+	if = { limit = { AND = { years_passed > 30  NOT = { years_passed < 40 } } }
+		add_resource = { alloys = 250 }
+	}
+	if = { limit = { AND = { years_passed > 40  NOT = { years_passed < 50 } } }
+		add_resource = { alloys = 300 }
+	}
+	if = { limit = { AND = { years_passed > 50  NOT = { years_passed < 60 } } }
+		add_resource = { alloys = 350 }
+	}
+	if = { limit = { AND = { years_passed > 60  NOT = { years_passed < 70 } } }
+		add_resource = { alloys = 400 }
+	}
+	if = { limit = { AND = { years_passed > 70  NOT = { years_passed < 80 } } }
+		add_resource = { alloys = 450 }
+	}
+	if = { limit = { AND = { years_passed > 80  NOT = { years_passed < 90 } } }
+		add_resource = { alloys = 500 }
+	}
+	if = { limit = { AND = { years_passed > 90  NOT = { years_passed < 100 } } }
+		add_resource = { alloys = 550 }
+	}
+	if = { limit = { AND = { years_passed > 100  NOT = { years_passed < 110 } } }
+		add_resource = { alloys = 600 }
+	}
+}
+
+AGiftL = {
+	if = { limit = { years_passed < 10 }
+		add_resource = { alloys = 200 }
+	}
+	if = { limit = { AND = { years_passed > 10  NOT = { years_passed < 20 } } }
+		add_resource = { alloys = 300 }
+	}
+	if = { limit = { AND = { years_passed > 20  NOT = { years_passed < 30 } } }
+		add_resource = { alloys = 400 }
+	}
+	if = { limit = { AND = { years_passed > 30  NOT = { years_passed < 40 } } }
+		add_resource = { alloys = 500 }
+	}
+	if = { limit = { AND = { years_passed > 40  NOT = { years_passed < 50 } } }
+		add_resource = { alloys = 600 }
+	}
+	if = { limit = { AND = { years_passed > 50  NOT = { years_passed < 60 } } }
+		add_resource = { alloys = 700 }
+	}
+	if = { limit = { AND = { years_passed > 60  NOT = { years_passed < 70 } } }
+		add_resource = { alloys = 800 }
+	}
+	if = { limit = { AND = { years_passed > 70  NOT = { years_passed < 80 } } }
+		add_resource = { alloys = 900 }
+	}
+	if = { limit = { AND = { years_passed > 80  NOT = { years_passed < 90 } } }
+		add_resource = { alloys = 1000 }
+	}
+	if = { limit = { AND = { years_passed > 90  NOT = { years_passed < 100 } } }
+		add_resource = { alloys = 1100 }
+	}
+	if = { limit = { AND = { years_passed > 100  NOT = { years_passed < 110 } } }
+		add_resource = { alloys = 1200 }
+	}
+}

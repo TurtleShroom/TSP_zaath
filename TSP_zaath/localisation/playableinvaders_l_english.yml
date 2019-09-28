@@ -1,0 +1,11 @@
+﻿l_english:
+####################################
+ # Diplomacy text
+ ####################################
+ 
+ # General Greetings
+ VOI:1 "Swarm"
+ EXT:1 "Extradimensional"
+ name_list_EXT1: "Extradimensional 1"
+ name_list_VOI1: "Swarm 1"
+ 

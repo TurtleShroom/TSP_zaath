@@ -1,0 +1,67 @@
+zaath_fleet_events_valid = {
+	is_at_war = no
+	OR = {
+		event_target:AncientA = { is_inside_border = ROOT }
+		event_target:AncientB = { is_inside_border = ROOT }
+		event_target:AncientC = { is_inside_border = ROOT }
+#		any_system_within_border = { zaath_fleet_in_system = yes }
+#		zaath_fleet_in_system = yes
+		event_target:AncientsA = {
+			has_presence = yes
+		}
+		event_target:AncientsB = {
+			has_presence = yes
+		}
+		event_target:AncientsC = {
+			has_presence = yes
+		}
+		any_ship_in_system = {
+			owner = {
+				OR = {
+					is_country_type = TheAncients
+					is_country_type = TheAncientsReformed
+				}
+			}
+		}
+	}
+	NOT = {
+		AND = {
+			exists = event_target:AncientA
+			is_hostile = event_target:AncientA
+		}
+	}
+	NOT = {
+		AND = {
+			exists = event_target:AncientB
+			is_hostile = event_target:AncientB
+		}
+	}
+	NOT = {
+		AND = {
+			exists = event_target:AncientC
+			is_hostile = event_target:AncientC
+		}
+	}
+}
+
+zaath_fleet_in_system = {
+	OR = {
+		any_ship_in_system = {
+			exists = owner
+			owner = {
+				OR = {
+					has_authority = auth_ancient
+					has_authority = auth_reformedancient
+					is_country_type = TheAncients
+					is_country_type = TheAncientsReformed
+				}
+			}
+		}
+		event_target:AncientA = { is_inside_border = ROOT }
+		event_target:AncientB = { is_inside_border = ROOT }
+		event_target:AncientC = { is_inside_border = ROOT }
+		event_target:AncientsA = { has_presence = yes }
+		event_target:AncientsB = { has_presence = yes }
+		event_target:AncientsC = { has_presence = yes }
+	}
+}

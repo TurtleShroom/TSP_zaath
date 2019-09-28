@@ -1,0 +1,852 @@
+namespace = zaathcomms
+
+#
+#	HOW THE ZAATH AND DEFAULT EMPIRES SPEAK.
+#					By Oblivious
+# ...stupid default skins, jk
+#
+
+#1-100 ZAATH COMMS
+#200-300 Default FROM Zaath
+#400-500 ZAATH TO SELF
+#600-700 Default to Zaath comms
+#This is to keep everything NOT clustered
+
+#Target0 = Zaath
+#Target1 = Default
+
+fleet_event = {
+	id = zaathcomms.1
+	title = TRANSMISSION
+	desc = zaathcomms.1.desc
+	is_triggered_only = yes
+	diplomatic = yes
+	picture_event_data = {
+		portrait = event_target:target0
+		room = shroud_room
+	}
+	
+	trigger = {
+		ROOT = {
+			owner = {
+				NOT = { has_country_flag = NoComms }
+			}
+			owner = {
+				OR = {
+					is_country_type = TheAncients
+					is_country_type = TheAncientsReformed
+					has_authority = auth_ancient
+					has_authority = auth_reformedancient
+				}
+			}
+		}
+
+		solar_system = {
+			exists = starbase
+		}
+	
+		owner = {
+			is_country_type = default
+			NOR = {
+				is_country_type = TheAncients
+				is_country_type = TheAncientsReformed	
+				has_authority = auth_ancient
+				has_authority = auth_reformedancient
+			}
+		}
+		from = {
+			is_star = yes
+			has_authority = auth_ancient
+			has_authority = auth_reformedancient
+		}
+	}
+	
+	immediate = {
+		ROOT = {
+			owner = {
+				save_event_target_as = target0
+			}
+		}
+		space_owner = {
+			THIS = {
+				save_event_target_as = target1 
+			}
+		}
+	}
+
+	option = {#GM Options for Player --- PUNISHMENTS, Warmonger ceus belli, END warmonger ceus belli
+		name = "zaathcomms.1.a"
+		event_target:target0 = {
+			country_event = { id = zaathcomms.2 }
+		}
+	}
+	option = {#Punish Player (Subject) #TO BE FINISHED
+		name = "zaathcomms.1.b"
+		event_target:target0 = { country_event = { id = zaathcomms.10 } }
+	}
+	option = {#Reward
+		name = "zaathcomms.1.c"
+		event_target:target0 = { country_event = { id = zaathcomms.3 } }
+	}
+	option = {#Demand to become Subject
+		name = "zaathcomms.1.d"
+		allow = { 
+			owner = {
+				NOT = { has_country_flag = zaath_subject_recently_demanded }
+				years_passed > 35
+			}
+		}
+		hidden_effect = {
+			event_target:target1 = { country_event = { id = zaathcomms.4 } }
+		}
+	}
+	
+	option = {#Break Subject
+		name = "zaathcomms.1.dd"
+		hidden_effect = {
+			event_target:target0 = { country_event = { id = zaathcomms.6 } }
+		}
+	}
+	
+	option = {#Induct into Zaath Cult
+		name = "zaathcomms.1.e"
+		allow = {
+			years_passed > 15
+		}
+		event_target:target0 = { country_event = { id = zaathcomms.11 } }
+	}	
+	
+	option = {#Request Pop TO EAT (Decadence DOWN)
+		name = "zaathcomms.1.g"
+		allow = {
+			years_passed > 20
+		}
+		event_target:target0 = { add_resource = { Zdecadence = 2 } }
+		event_target:target1 = { country_event = { id = zaathcomms.221 } }
+	}
+	
+	option = {#End Transmission
+		name = "END"
+	}
+}
+
+country_event = {#Options
+	id = zaathcomms.2
+	title = TRANSMISSION
+	desc = zaathcomms.2.desc
+	diplomatic = yes
+	is_triggered_only = yes
+	picture_event_data = {
+		portrait = event_target:target0 #Player
+		room = shroud_room
+	}
+	
+	option = {#Turn ON Warmonger ceus-belli
+		name = "zaathcomms.2.a"
+		allow = { event_target:target1 = { NOT = { has_country_flag = WARMON } } }
+		event_target:target1 = {
+		set_timed_country_flag = { flag = WARMON days = 3600 }
+		}
+		hidden_effect = {
+		country_event = { id = zaathcomms.2 }
+		}
+		default_hide_option = yes
+	}
+	option = {#Turn OFF Warmonger ceus-belli
+		name = "zaathcomms.2.b"
+		allow = { event_target:target1 = { has_country_flag = WARMON } }
+		event_target:target1 = {
+		remove_country_flag = WARMON
+		}
+		hidden_effect = {
+		country_event = { id = zaathcomms.2 }
+		}
+		default_hide_option = yes
+	}
+	option = {#Establish Communications
+		name = "zaathcomms.2.c"
+		establish_communications_no_message = event_target:target1
+	}
+	option = {
+		name = "Nothing"
+		set_timed_country_flag = { flag = NoComms days = 30 }
+	}
+}
+
+country_event = {#GIFTS
+	id = zaathcomms.3
+	title = TRANSMISSION
+	desc = zaathcomms.3.desc
+	diplomatic = yes
+	is_triggered_only = yes
+	picture_event_data = {
+		portrait = event_target:target0
+		room = shroud_room	
+	}
+	
+	option = {#Small Gift MINERALS
+		name = "zaathcomms.3.a"
+		event_target:target0 = { add_resource = { Zdecadence = 5 } }
+		event_target:target1 = { country_event = { id = zaathcomms.200 } }
+		response_text = zaathcommsDONE
+	}
+	option = {#Medium Gift MINERALS
+		name = "zaathcomms.3.b"
+		event_target:target0 = { add_resource = { Zdecadence = 10 } }
+		event_target:target1 = { country_event = { id = zaathcomms.201 } }
+		response_text = zaathcommsDONE
+	}
+	option = {#Big Gift MINERALS
+		name = "zaathcomms.3.c"
+		event_target:target0 = { add_resource = { Zdecadence = 15 } }
+		event_target:target1 = { country_event = { id = zaathcomms.202 } }
+		response_text = zaathcommsDONE
+	}
+	option = {#Small Gift ENERGY
+		name = "zaathcomms.3.d"
+		event_target:target0 = { add_resource = { Zdecadence = 5 } }
+		event_target:target1 = { country_event = { id = zaathcomms.203 } }
+		response_text = zaathcommsDONE
+	}
+	option = {#Medium Gift ENERGY
+		name = "zaathcomms.3.e"
+		event_target:target0 = { add_resource = { Zdecadence = 10 } }
+		event_target:target1 = { country_event = { id = zaathcomms.204 } }
+		response_text = zaathcommsDONE
+	}
+	option = {#Big Gift ENERGY
+		name = "zaathcomms.3.f"
+		event_target:target0 = { add_resource = { Zdecadence = 15 } }
+		event_target:target1 = { country_event = { id = zaathcomms.205 } }
+		response_text = zaathcommsDONE
+	}
+	option = {#Small Gift FOOD
+		name = "zaathcomms.3.g"
+		event_target:target0 = { add_resource = { Zdecadence = 5 } }
+		event_target:target1 = { country_event = { id = zaathcomms.206 } }
+		response_text = zaathcommsDONE
+	}
+	option = {#Medium Gift FOOD
+		name = "zaathcomms.3.h"
+		event_target:target0 = { add_resource = { Zdecadence = 10 } }
+		event_target:target1 = { country_event = { id = zaathcomms.207 } }
+		response_text = zaathcommsDONE
+	}
+	option = {#Big Gift FOOD
+		name = "zaathcomms.3.i"
+		event_target:target0 = { add_resource = { Zdecadence = 15 } }
+		event_target:target1 = { country_event = { id = zaathcomms.208 } }
+		response_text = zaathcommsDONE
+	}
+	option = {#Small Gift ALLOY
+		name = "zaathcomms.3.j"
+		event_target:target0 = { add_resource = { Zdecadence = 5 } }
+		event_target:target1 = { country_event = { id = zaathcomms.211 } }
+		response_text = zaathcommsDONE
+	}
+	option = {#Medium Gift ALLOY
+		name = "zaathcomms.3.k"
+		event_target:target0 = { add_resource = { Zdecadence = 10 } }
+		event_target:target1 = { country_event = { id = zaathcomms.212 } }
+		response_text = zaathcommsDONE
+	}
+	option = {#Big Gift ALLOY
+		name = "zaathcomms.3.l"
+		event_target:target0 = { add_resource = { Zdecadence = 15 } }
+		event_target:target1 = { country_event = { id = zaathcomms.213 } }
+		response_text = zaathcommsDONE
+	}
+	
+	option = {
+		name = "Cancel"
+	}
+}
+
+country_event = {#Demand SUBJECT
+	id = zaathcomms.4
+	title = TRANSMISSION
+	desc = zaathcomms.4.desc #WARNING/// Gain 10 Decadence when demanded
+	diplomatic = yes
+	is_triggered_only = yes
+	picture_event_data = {
+		portrait = event_target:target1
+		room = shroud_room	
+	}
+	option = {#YES
+		name = "zaathcomms.4.a"
+		event_target:target0 = { add_resource = { Zdecadence = 10 } }
+		event_target:target1 = { country_event = { id = zaathcomms.209 } }
+		response_text = zaathcommsDONE
+	}
+	option = {#NO (RESPONSE TEXT TO BE ADDED)
+		name = "zaathcomms.4.b"
+		response_text = zaathcommsGChoice #Good Choice
+		set_country_flag = zaath_subject_recently_demanded
+	}
+}
+
+country_event = {#Induct into Zaath Cult
+	id = zaathcomms.5
+	title = TRANSMISSION
+	desc = zaathcomms.5.desc
+	diplomatic = yes
+	is_triggered_only = yes
+	picture_event_data = {
+		portrait = event_target:target0
+		room = shroud_room
+	}
+}
+
+country_event = {#Break Subject (ZAATH) ##Warn them and lower decadence by 5
+	id = zaathcomms.6
+	title = TRANSMISSION
+	desc = zaathcomms.6.desc
+	diplomatic = yes
+	is_triggered_only = yes
+	picture_event_data = {
+		portrait = event_target:target0
+		room = shroud_room
+	}
+	
+	option = {
+		name = "No"
+	}
+	option = {
+		name = "Yes"
+		add_resource = { Zdecadence = -5 }
+		hidden_effect = {
+		event_target:target1 = {
+			set_subject_of = {
+				who = none
+#				subject_type = no
+			}
+		}
+		event_target:target1 = {
+			every_system_within_border = {
+				every_fleet_in_system = {
+					limit = {
+						is_ship_size = ZaathGuardFort
+						}
+						delete_fleet = this
+					}
+				}
+			}
+		}
+	}
+}
+
+country_event = {#Subject Punishments
+	id = zaathcomms.10
+	title = TRANSMISSION
+	desc = zaathcomms.10.desc
+	diplomatic = yes
+	is_triggered_only = yes
+	picture_event_data = {
+		portrait = event_target:target0
+		room = shroud_room
+	}
+	
+	option = {#Psychic Wave -- -10 Happiness/50% Crime
+		name = OMINOUS
+	}
+	option = {
+		name = OMINOUS
+	}
+	option = {
+		name = OMINOUS
+	}
+	option = {
+		name = OMINOUS
+	}
+	
+	option = {
+		name = CANCEL
+	}
+}
+
+country_event = {#Zaath Cult Confirmation
+	id = zaathcomms.11
+	title = TRANSMISSION
+	desc = zaathcomms.11.desc
+	diplomatic = yes
+	is_triggered_only = yes
+	picture_event_data = {
+		portrait = event_target:target1
+		room = shroud_room
+	}
+	
+	option = {
+		name = "CONFIRM"
+	hidden_effect = {
+		event_target:target1 = { country_event = { id = zaathcomms.220 } }
+		}
+		event_target:target0 = { add_resource = { Zdecadence = 15 } }
+	}
+	
+	option = {
+		name = "CANCEL"
+	}
+}
+
+##Zaath to Default
+
+country_event = {#Small Mineral Gift
+	id = zaathcomms.200
+	title = TRANSMISSION
+	desc = zaathcomms.200.desc
+	diplomatic = yes
+	is_triggered_only = yes
+	picture_event_data = {
+		portrait = event_target:target0
+		room = shroud_room
+	}
+	option = {
+		name = "THANK_YOU"
+		event_target:target1 = { MGiftS = yes }
+	}
+	option = {
+		name = "NO_THANK_YOU"
+		hidden_effect = {
+		}
+		response_text = zaathcommsSHAME
+	}	
+}
+
+country_event = {#Medium Mineral Gift
+	id = zaathcomms.201
+	title = TRANSMISSION
+	desc = zaathcomms.201.desc
+	diplomatic = yes
+	is_triggered_only = yes
+	picture_event_data = {
+		portrait = event_target:target0
+		room = shroud_room
+	}
+	option = {
+		name = "NoThanks"
+		hidden_effect = {
+		}
+		response_text = zaathcommsSHAME
+	}
+	option = {
+		name = "Thank"
+		event_target:target1 = { MGiftM = yes }
+	}
+}
+
+country_event = {#LARGE Mineral Gift
+	id = zaathcomms.202
+	title = TRANSMISSION
+	desc = zaathcomms.202.desc
+	diplomatic = yes
+	is_triggered_only = yes
+	picture_event_data = {
+		portrait = event_target:target0
+		room = shroud_room
+	}
+	
+	option = {
+		name = "NoThanks"
+		hidden_effect = {
+		}
+		response_text = zaathcommsSHAME
+	}
+	option = {
+		name = "Thank"
+		event_target:target1 = { MGiftL = yes }
+	}
+}
+
+country_event = {#SMALL Energy Gift
+	id = zaathcomms.203
+	title = TRANSMISSION
+	desc = zaathcomms.203.desc
+	diplomatic = yes
+	is_triggered_only = yes
+	picture_event_data = {
+		portrait = event_target:target0
+		room = shroud_room
+	}
+	option = {
+		name = "NoThanks"
+		hidden_effect = {
+		}
+		response_text = zaathcommsSHAME
+	}	
+	option = {
+		name = "Thank"
+		event_target:target1 = { EGiftS = yes }
+	}
+}
+
+country_event = {#MEDIUM Energy Gift
+	id = zaathcomms.204
+	title = TRANSMISSION
+	desc = zaathcomms.204.desc
+	diplomatic = yes
+	is_triggered_only = yes
+	picture_event_data = {
+		portrait = event_target:target0
+		room = shroud_room
+	}
+	option = {
+		name = "NoThanks"
+		hidden_effect = {
+		}
+		response_text = zaathcommsSHAME
+	}	
+	option = {
+		name = "Thank"
+		event_target:target1 = { EGiftM = yes }
+	}
+}
+
+country_event = {#LARGE Energy Gift
+	id = zaathcomms.205
+	title = TRANSMISSION
+	desc = zaathcomms.205.desc
+	diplomatic = yes
+	is_triggered_only = yes
+	picture_event_data = {
+		portrait = event_target:target0
+		room = shroud_room
+	}
+	option = {
+		name = "NoThanks"
+		hidden_effect = {
+		}
+		response_text = zaathcommsSHAME
+	}	
+	option = {
+		name = "Thank"
+		event_target:target1 = { EGiftL = yes }
+	}
+}
+
+country_event = {#SMALL Food Gift
+	id = zaathcomms.206
+	title = TRANSMISSION
+	desc = zaathcomms.206.desc
+	diplomatic = yes
+	is_triggered_only = yes
+	picture_event_data = {
+		portrait = event_target:target0
+		room = shroud_room
+	}
+	option = {
+		name = "NoThanks"
+		hidden_effect = {
+		}
+		response_text = zaathcommsSHAME
+	}	
+	option = {
+		name = "Thank"
+		event_target:target1 = { FGiftS = yes }
+	}
+}
+
+country_event = {#MEDIUM Food Gift
+	id = zaathcomms.207
+	title = TRANSMISSION
+	desc = zaathcomms.207.desc
+	diplomatic = yes
+	is_triggered_only = yes
+	picture_event_data = {
+		portrait = event_target:target0
+		room = shroud_room
+	}
+	option = {
+		name = "NoThanks"
+		hidden_effect = {
+		}
+		response_text = zaathcommsSHAME
+	}	
+	option = {
+		name = "Thank"
+		event_target:target1 = { FGiftM = yes }
+	}
+}
+
+country_event = {#LARGE Food Gift
+	id = zaathcomms.208
+	title = TRANSMISSION
+	desc = zaathcomms.208.desc
+	diplomatic = yes
+	is_triggered_only = yes
+	picture_event_data = {
+		portrait = event_target:target0
+		room = shroud_room
+	}
+	option = {
+		name = "NoThanks"
+		response_text = zaathcommsSHAME
+	}	
+	option = {
+		name = "Thank"
+		event_target:target1 = { FGiftL = yes }
+	}
+}
+
+country_event = {#VASSALIZATION DEMANDS
+	id = zaathcomms.209
+	title = TRANSMISSION
+	diplomatic = yes
+	is_triggered_only = yes
+	picture_event_data = {
+		portrait = event_target:target0
+		room = shroud_room
+	}
+	
+	desc = {
+		text = "zaathcomms.209.desca"
+		trigger = {
+			event_target:target0 = { has_ethic = ethic_fanatic_xenophobe }
+		}
+	}
+	desc = {
+		text = "zaathcomms.209.descb"
+		trigger = {
+			event_target:target0 = { has_ethic = ethic_fanatic_xenophile }
+		}
+	}
+	desc = {
+		text = "zaathcomms.209.descc"
+		trigger = {
+			event_target:target0 = { has_ethic = ethic_fanatic_militarist }
+		}
+	}
+	
+	option = {#YES
+		name = "ACCEPT"
+		hidden_effect = {
+			country_event = { id = zaathcomms.210 }
+		}
+		
+	}
+	
+	option = {#NO
+		name = "DECLINE"
+		response_text = zaathcommsREGRET
+	}
+}
+
+country_event = {#Vassalization Accepted
+	id = zaathcomms.210
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		if = {#Xenophobe Vassal
+			limit = {
+				event_target:target0 = { 
+					has_ethic = ethic_fanatic_xenophobe
+				} 
+			}
+			set_subject_of = {
+				who = event_target:target0
+				subject_type = eternal_proliferators
+			}
+#			create_fleet = {
+#				name = "Eternal Guardian"
+#				effect = {
+#					set_owner = event_target:target0
+#					create_ship = {
+#						name = "TurtleShroom Was Here"
+#						design = ""
+#						graphical_culture = "extra_dimensional_01"
+#					}
+#				}
+#			}
+		}
+		else_if = {#Xenophile Vassal
+			limit = { event_target:target0 = { 
+				has_ethic = ethic_fanatic_xenophile
+			} }
+		set_subject_of = {
+			who = event_target:target0
+			subject_type = Tesla
+			}
+		}
+		else = {#Militarist Vassal
+			if = { limit = { event_target:target0 = { 
+				has_ethic = ethic_fanatic_militarist
+			} }
+		set_subject_of = {
+			who = event_target:target0
+			subject_type = Bufferstate
+			}
+		}
+		}
+	}
+}
+
+country_event = {#Small Alloy Gift
+	id = zaathcomms.211
+	title = TRANSMISSION
+	desc = zaathcomms.211.desc
+	diplomatic = yes
+	is_triggered_only = yes
+	picture_event_data = {
+		portrait = event_target:target0
+		room = shroud_room
+	}
+	option = {
+		name = "NoThanks"
+		response_text = zaathcommsSHAME
+	}	
+	option = {
+		name = "Thank"
+		event_target:target1 = { AGiftS = yes }
+	}
+}
+
+country_event = {#Medium Alloy Gift
+	id = zaathcomms.212
+	title = TRANSMISSION
+	desc = zaathcomms.212.desc
+	diplomatic = yes
+	is_triggered_only = yes
+	picture_event_data = {
+		portrait = event_target:target0
+		room = shroud_room
+	}
+	option = {
+		name = "NoThanks"
+		response_text = zaathcommsSHAME
+	}	
+	option = {
+		name = "Thank"
+		event_target:target1 = { AGiftM = yes }
+	}
+}
+
+country_event = {#Large Alloy Gift
+	id = zaathcomms.213
+	title = TRANSMISSION
+	desc = zaathcomms.213.desc
+	diplomatic = yes
+	is_triggered_only = yes
+	picture_event_data = {
+		portrait = event_target:target0
+		room = shroud_room
+	}
+	option = {
+		name = "NoThanks"
+		response_text = zaathcommsSHAME
+	}	
+	option = {
+		name = "Thank"
+		event_target:target1 = { AGiftL = yes }
+	}
+}
+
+country_event = {#Zaath Cult Request
+	id = zaathcomms.220
+	title = TRANSMISSION
+	desc = zaathcomms.220.desc
+	diplomatic = yes
+	is_triggered_only = yes
+	picture_event_data = {
+		portrait = event_target:target0
+		room = shroud_room
+	}
+	
+	option = {
+		name = "ACCEPT"
+		hidden_effect = {
+			event_target:target1 = { set_country_flag = zaathcult }
+		}
+		event_target:target1 = { add_modifier = { modifier = ongoingcult days = -1 } }
+	}
+	
+	option = {
+		name = "DENY"
+		response_text = zaathcommsSHAME
+	}
+}
+
+country_event = {#Zaath Requests Pop to eat
+	id = zaathcomms.221
+	title = TRANSMISSION
+	diplomatic = yes
+	is_triggered_only = yes
+	picture_event_data = {
+		portrait = event_target:target0
+		room = shroud_room
+	}
+	
+	desc = {
+		text = "zaathcomms.221.desca"
+		trigger = {
+			event_target:target0 = { has_ethic = ethic_fanatic_xenophobe }
+		}
+	}
+	desc = {
+		text = "zaathcomms.221.descb"
+		trigger = {
+			event_target:target0 = { has_ethic = ethic_fanatic_xenophile }
+		}
+	}
+	desc = {
+		text = "zaathcomms.221.descc"
+		trigger = {
+			event_target:target0 = { has_ethic = ethic_fanatic_militarist }
+		}
+	}
+	
+	option = {
+		name = "ACCEPT"
+		event_target:target0 = { add_resource = { zdecadence = -7 } }
+	}
+	option = {
+		name = "DECLINE"
+		response_text = zaathcommsSHAME
+	}
+}
+
+
+
+
+# Failed Concepts
+#
+#country_event = {#CONTACT SELF 2.2 BROKE this. No Self comms. Self Edict only.
+#	id = zaathcomms.400
+#	title = TRANSMISSION
+#	desc = zaathcomms.400.desc
+#	diplomatic = yes
+#	picture_event_data = {
+#		portrait = this
+#		room = this
+#	}
+#	
+#	trigger = {
+#		from = {
+#			is_same_value = this
+#				is_country_type = TheAncients
+#				is_country_type = TheAncientsReformed
+#			}
+#		}
+#		this = {
+#			is_same_value = from
+#		}
+#	}
+#	
+#	immediate = {
+#	}
+#	
+#	option = {#Establish Comms
+#		name = zaathcomms.400.a
+#		every_country = {
+#		establish_communications_no_message = this
+#		}
+#	}
+#}
+#
+#country_event = {#DISCONTINUED EVENT BROKE
+#	id = zaathcomms.600
+#	title = DENIED
+#	desc = zaathcomms.600.desc
+#	
+#	option = {
+#		name = "Shame"
+#	}
+#}
