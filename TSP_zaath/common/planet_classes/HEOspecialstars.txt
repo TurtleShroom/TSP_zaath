@@ -1,5 +1,5 @@
 Ancient_Flagship = {
-	entity = "alpine_planet"
+	entity = "entity_alpine_planet"
 	entity_scale = @planet_standard_scale
 	icon_frame = 19
 	

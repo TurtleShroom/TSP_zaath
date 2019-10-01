@@ -37,7 +37,7 @@ country_event = {
 	trigger = {
 		OR = {
 			is_country_type = global_event
-			is_country_tyoe = shroud
+			is_country_type = shroud
 			is_ai = no
 		}
 	}
@@ -108,7 +108,7 @@ country_event = {
 	trigger = {
 		OR = {
 			is_country_type = global_event
-			is_country_tyoe = shroud
+			is_country_type = shroud
 			is_ai = no
 		}
 	}
@@ -284,7 +284,7 @@ country_event = {
 	trigger = {
 		OR = {
 			is_country_type = global_event
-			is_country_tyoe = shroud
+			is_country_type = shroud
 			is_ai = no
 		}
 	}
@@ -411,7 +411,7 @@ country_event = {
 	}
 
 	after = {
-		event = {
+		country_event = {
 			id = HEEGM.9
 			days = 3
 		}
@@ -426,7 +426,7 @@ country_event = {
 	trigger = {
 		OR = {
 			is_country_type = global_event
-			is_country_tyoe = shroud
+			is_country_type = shroud
 			is_ai = no
 		}
 	}
@@ -545,11 +545,11 @@ country_event = {
 				fleet_event = { id = TSP_HEO_flavor_ancient_events.2 }
 			}
 		}
-		after = {
-			event = {
-				id = HEEGM.10
-				days = 3
-			}
+	}
+	after = {
+		country_event = {
+			id = HEEGM.10
+			days = 3
 		}
 	}
 }
@@ -562,7 +562,7 @@ country_event = {
 	trigger = {
 		OR = {
 			is_country_type = global_event
-			is_country_tyoe = shroud
+			is_country_type = shroud
 			is_ai = no
 		}
 	}
