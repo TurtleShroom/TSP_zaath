@@ -19,6 +19,7 @@ zzzZaath_Resources = {
 	max = 1
 	
 	visibility_prerequisite = {
+		always = no
 		OR = {
 			has_authority = auth_ancient
 			has_authority = auth_reformedancient
