@@ -292,8 +292,7 @@ country_event = {
 	immediate = {
 		create_country = { 
 			name = "The Iron Ancients"
-			type = TheAncients
-			auto_delete = no
+			type = "TheAncients"
 			name_list = PRT1
 			ship_prefix = "ZIA-A"
 			authority = auth_ancient
@@ -337,8 +336,6 @@ country_event = {
 			set_country_flag = xenoancient
 			set_country_type = TheAncients
 			
-			change_government = {
-				authority = auth_ancient
 			}
 
 			event_target:TSP_zaath_exploded_planet = {
