@@ -30,7 +30,7 @@ TSP_ssb_loaf_core_system_initializer = {
 
 	planet = {
 		name = "THE POTATO"
-		class = "pc_crystal_asteroid"
+		class = "TSP_zaath_potato"
 		orbit_distance = 0
 		orbit_angle = 1
 		size = 60
