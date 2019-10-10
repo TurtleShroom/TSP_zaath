@@ -8,8 +8,8 @@ country_event = {
 
 	trigger = {
 		OR = {
-			is_country_type = global_event
 			is_country_type = shroud
+			is_country_type = global_event
 			is_ai = no
 		}
 	}
@@ -335,8 +335,6 @@ country_event = {
 			save_global_event_target_as = AncientA
 			set_country_flag = xenoancient
 			set_country_type = TheAncients
-			
-			}
 
 			event_target:TSP_zaath_exploded_planet = {
 				set_planet_flag = AncientMarkedA

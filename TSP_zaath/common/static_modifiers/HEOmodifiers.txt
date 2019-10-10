@@ -64,3 +64,20 @@ ongoingcult = {
 	country_unity_produces_mult = 0.15
 	pop_ethic_spiritualist_attraction_mult = 0.5
 }
+
+zaath_tesla_vassal = {
+	pop_ethic_egalitarian_attraction_mult = 0.2
+	pop_ethic_xenophile_attraction_mult = 0.5
+}
+
+zaath_proliferator_vassal = {
+	ship_home_territory_fire_rate_mult = 0.25
+	pop_ethic_xenophobe_attraction_mult = 0.8
+	pop_ethic_xenophile_attraction_mult = -0.3
+}
+
+zaath_buffer_state_vassal = {
+	ship_fire_rate_mult = 0.05
+	pop_ethic_militarist_attraction_mult = 0.8
+	pop_ethic_pacifist_attraction_mult = -0.5
+}

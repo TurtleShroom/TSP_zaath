@@ -4,7 +4,7 @@
 
 TSP_sys_zaath_kitchen = {
 	potential = {
-		system = {
+		ROOT = {
 			any_planet = {
 				OR = {
 					has_planet_flag = zaath_central_body

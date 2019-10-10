@@ -81,7 +81,6 @@ TSP_ssb_loaf_core_system_initializer = {
 	asteroid_belt = {
 		type = crystal_asteroid_belt
 		radius = 20
-	}
 
 	planet = {
 		name = "THE LOAF"
@@ -141,6 +140,7 @@ TSP_ssb_loaf_core_system_initializer = {
 		init_effect = {
 			set_planet_flag = it_has_nerves_of_steel # This planet flag looks like a joke, but it's going to be used to track things in Events
 		}
+	}
 	}
 	planet = {
 		name = "Phoenix"

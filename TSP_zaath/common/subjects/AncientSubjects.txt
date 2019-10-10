@@ -1,9 +1,9 @@
 Tesla = {
-	can_expand = yes
 	can_be_integrated = no
 	joins_overlord_wars = yes
 	calls_overlord_to_war = no
 	can_do_diplomacy = yes
+	can_expand = yes
 
 	subject_tax_rate = {
 		minerals = 0.25
@@ -22,16 +22,20 @@ Tesla = {
 	}
 	
 	effect = {
-		pop_ethic_fanatic_egalitarian_attraction_mult = 0.8
+		add_modifier = {
+			modifier = zaath_tesla_vassal
+			days = -1
+		}
 		if = {
 			limit = {
 				from = { 	
 					is_country_type_with_subjects = no
-					}
+				}
 			}
 			set_subject_of = {
 				who = none
 			}
+			remove_modifier = zaath_tesla_vassal
 			break = yes
 		}		
 		if = {
@@ -57,11 +61,11 @@ Tesla = {
 }
 
 eternal_proliferators = {
-	can_expand = yes
 	can_be_integrated = no
 	joins_overlord_wars = yes
 	calls_overlord_to_war = no
 	can_do_diplomacy = yes
+	can_expand = yes
 
 	subject_tax_rate = {
 		minerals = 0.25
@@ -79,8 +83,10 @@ eternal_proliferators = {
 	}
 	
 	effect = {
-		ship_home_territory_fire_rate_mult = 0.05
-		pop_ethic_xenophobe_attraction_mult = 0.8
+		add_modifier = {
+			modifier = zaath_proliferator_vassal
+			days = -1
+		}
 		if = {
 			limit = {
 				from = { 	
@@ -90,6 +96,7 @@ eternal_proliferators = {
 			set_subject_of = {
 				who = none
 			}
+			remove_modifier = zaath_proliferator_vassal
 			break = yes
 		}		
 		if = {
@@ -114,12 +121,12 @@ eternal_proliferators = {
 	}
 }
 
-Bufferstate = {
-	can_expand = yes
+bufferstate = {
 	can_be_integrated = no
 	joins_overlord_wars = yes
 	calls_overlord_to_war = no
 	can_do_diplomacy = yes
+	can_expand = yes
 
 	subject_tax_rate = {
 		minerals = 0.25
@@ -137,8 +144,10 @@ Bufferstate = {
 	}
 	
 	effect = {
-		ship_fire_rate_mult = 0.05
-		pop_ethic_militarist_attraction_mult = 0.8
+		add_modifier = {
+			modifier = zaath_buffer_state_vassal
+			days = -1
+		}
 		if = {
 			limit = {
 				from = { 	
@@ -148,6 +157,7 @@ Bufferstate = {
 			set_subject_of = {
 				who = none
 			}
+			remove_modifier = zaath_buffer_state_vassal
 			break = yes
 		}
 		if = {
