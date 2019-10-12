@@ -17,9 +17,6 @@ country_event = {
 	immediate = {
 		log = "Zaath Mod successfully initialized"
 		set_global_flag = hide_your_bread_hide_your_life
-	}
-
-	after = {
 		country_event = {
 			id = HEEGM.3
 			days = 3
