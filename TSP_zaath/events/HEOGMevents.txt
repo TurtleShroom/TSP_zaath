@@ -4,14 +4,17 @@ country_event = {
 	id = HEEGM.1
 	hide_window = yes
 	fire_only_once = yes
-	is_triggered_only = yes
+#	is_triggered_only = yes
 
 	trigger = {
 		OR = {
-			is_country_type = shroud
 			is_country_type = global_event
 			is_ai = no
 		}
+	}
+
+	mean_time_to_happen = {
+		days = 2
 	}
 
 	immediate = {
@@ -37,7 +40,6 @@ country_event = {
 	trigger = {
 		OR = {
 			is_country_type = global_event
-			is_country_type = shroud
 			is_ai = no
 		}
 	}
@@ -108,7 +110,6 @@ country_event = {
 	trigger = {
 		OR = {
 			is_country_type = global_event
-			is_country_type = shroud
 			is_ai = no
 		}
 	}
@@ -234,26 +235,26 @@ country_event = { # Reformation Announcement
 	}
 }
 		
-country_event = { # Warmonger Request
-	id = HEEGM.6
-	hide_window = yes
-	is_triggered_only = yes
-	
-	trigger = {
-		has_edict = invitecoalition
-	}
-	
-	immediate = {
-		set_timed_country_flag = { flag = coalitioninvited days = 360 }
-		save_event_target_as = coalitionleader
+#country_event = { # Warmonger Request
+#	id = HEEGM.6
+#	hide_window = yes
+#	is_triggered_only = yes
+#	
+#	trigger = {
+#		has_edict = invitecoalition
+#	}
+#	
+#	immediate = {
+#		set_timed_country_flag = { flag = coalitioninvited days = 360 }
+#		save_event_target_as = coalitionleader
 #		every_country = {
 #			limit = { 
 #				is_country_type = default
 #			}
 #			country_event = { id =  }
 #		}
-	}
-	
+#	}
+#	
 #	option = {
 #		name = "ACCEPT"
 #		join_war = from
@@ -262,7 +263,7 @@ country_event = { # Warmonger Request
 #	option = {
 #		name = "DENY"
 #	}
-}
+#}
 
 country_event = { # Request
 	id = HEEGM.7
@@ -284,7 +285,6 @@ country_event = {
 	trigger = {
 		OR = {
 			is_country_type = global_event
-			is_country_type = shroud
 			is_ai = no
 		}
 	}
@@ -421,7 +421,6 @@ country_event = {
 	trigger = {
 		OR = {
 			is_country_type = global_event
-			is_country_type = shroud
 			is_ai = no
 		}
 	}
@@ -506,7 +505,7 @@ country_event = {
 						upgradable = no
 					}
 					create_ship = {
-						name = "NO, DAD, NO!"
+						name = "NO DAD, NO!"
 						design = "corvette"
 						graphical_culture = avian_01
 						upgradable = no
@@ -557,7 +556,6 @@ country_event = {
 	trigger = {
 		OR = {
 			is_country_type = global_event
-			is_country_type = shroud
 			is_ai = no
 		}
 	}

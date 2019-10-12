@@ -5,11 +5,11 @@
 #	}
 #}
 
-on_game_start_country = {
-	events = {
-		HEEGM.1
-	}
-}
+#on_game_start_country = {
+#	events = {
+#		HEEGM.1
+#	}
+#}
 
 #From = Planet scope
 #This = Fleet scope
