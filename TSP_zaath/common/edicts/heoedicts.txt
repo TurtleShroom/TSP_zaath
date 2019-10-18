@@ -1,26 +1,26 @@
-invitecoalition = {
-	length = 1
-	potential = {
-		is_country_type = default
-		is_at_war = yes
-		using_war_goal = {
-			type = wg_warmongerattack
-			owner = this
-		}
-		always = no
-	}
-	allow = {
-		NOT = {
-			has_country_flag = coalitioninvited
-		}
-		always = no
-	}
-	effect = {
+#invitecoalition = {
+#	length = 1
+#	potential = {
+#		is_country_type = default
+#		is_at_war = yes
+#		using_war_goal = {
+#			type = wg_warmongerattack
+#			owner = this
+#		}
+#		always = no
+#	}
+#	allow = {
+#		NOT = {
+#			has_country_flag = coalitioninvited
+#		}
+#		always = no
+#	}
+#	effect = {
 #		country_event = {
 #			id = 
 #		}
-	}
-}
+#	}
+#}
 
 selfcomms = {
 	length = 1

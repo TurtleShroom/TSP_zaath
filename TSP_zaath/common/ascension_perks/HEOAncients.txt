@@ -1,9 +1,13 @@
 AncientThwarting = {
 	on_enabled = {
 	}
+
 	modifier = {
 		description = AncientThwarting_modifier_desc
 		damage_vs_country_type_TheAncientsReformed_mult = 0.5
+	}
+	potential = {
+		is_country_type = default
 	}
 	possible = {
 		custom_tooltip = {
@@ -11,26 +15,32 @@ AncientThwarting = {
 			NOT = { has_global_flag = AncientReform }
 		}
 	}
-		potential = {
-			is_country_type = default
-		}
+	ai_weight = {
+		factor = 0
 	}
+}
 
 AncientReform = {
 	on_enabled = {		
 	}
+
 	modifier = {
 		description = AncientReform_modifier_desc
-#		pop_resource_output = 0.22
+		planet_jobs_produces_mult = 0.15
 		country_produces_mult = 0.2
 		stations_produces_mult = 0.2
 	}
 	potential = {
 		is_country_type = TheAncients
+	}
+	possible = {
 		custom_tooltip = {
 			fail_text = "AncientTooFast"
 			NOT = { years_passed > 20 }
 		}
+	}
+	ai_weight = {
+		factor = 999
 	}
 }
 
@@ -40,7 +50,7 @@ AncientReformsTWO = {
 	
 	modifier = {
 		description = AncientReformsTWO_modifier_desc
-		country_unity_produces_mult = 2
+		country_unity_produces_mult = 1 # Doubles Unity output
 	}
 	potential = {
 		is_country_type = TheAncients
@@ -51,6 +61,9 @@ AncientReformsTWO = {
 			NOT = { years_passed > 49 }
 		}
 	}
+	ai_weight = {
+		factor = 999
+	}
 }
 
 AncientReformsTHREE = {
@@ -60,8 +73,9 @@ AncientReformsTHREE = {
 		}
 	}
 	modifier = {
-	description = AncientReformsTHREE_modifier_desc
-	all_technology_research_speed = 0.25	
+		description = AncientReformsTHREE_modifier_desc
+		all_technology_research_speed = 0.25
+		planet_jobs_unity_produces_add = 0.1 # That means EVERY Job
 	}
 	potential = {
 		is_country_type = TheAncients
@@ -71,5 +85,8 @@ AncientReformsTHREE = {
 			fail_text = "AncientTooFast"
 			NOT = { years_passed > 99 }
 		}
+	}
+	ai_weight = {
+		factor = 999
 	}
 }

@@ -1,7 +1,7 @@
 TSP_zaath_potato = {
-	entity = "asteroid_crystal_large"
+	entity = asteroid_crystal_large_01_entity
 	picture = pc_crystal_asteroid
-	entity_scale = 1.5
+	entity_scale = 1.1
 	icon_frame = 18
 
 	atmosphere_color 	= hsv { 0.075 0.13 1.5 }

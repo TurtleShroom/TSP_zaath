@@ -14,15 +14,16 @@ country_event = {
 	}
 
 	mean_time_to_happen = {
-		days = 2
+		days = 4
 	}
 
 	immediate = {
 		log = "Zaath Mod successfully initialized"
-		set_global_flag = hide_your_bread_hide_your_life
+#		set_global_flag = hide_your_bread_hide_your_life # Moved to Zaath species
+		set_global_flag = zaath_enabled
 		country_event = {
 			id = HEEGM.3
-			days = 3
+			days = 2
 		}
 	}
 }
@@ -42,7 +43,7 @@ country_event = {
 	}
 	
 #	mean_time_to_happen = {
-#		months = 1
+#		days = 2
 #	}
 	
 	immediate = {
@@ -63,11 +64,18 @@ country_event = {
 		last_created_species = {
 			save_global_event_target_as = Zaathspecies
 #			set_pop_flag = Zaathspecies
-			set_species_flag = Zaathspecies # Added twice because of capitalization conflicts
+			set_species_flag = Zaathspecies # Added twice because of capitalization conflicts from the two Mod authors
 			set_species_flag = zaathspecies
 			set_species_flag = zaath
+			set_species_homeworld = event_target:TSP_zaath_exploded_planet
 		}
 
+		set_global_flag = hide_your_bread_hide_your_life
+
+		log = "ZAATH SPECIES SPAWNED: We've got some Xeno-phages up in here. Hide your BREAD! Hide your life!"
+
+#		country_event = { id = HEEGM.8 days = 3 }
+#
 #		event_target:Zaathspecies = {
 #			set_species_homeworld = event_target:TSP_zaath_exploded_planet
 #		}
@@ -86,14 +94,6 @@ country_event = {
 #			}
 #			event = { id = HEEGM.3 }
 #		}
-	}
-
-	after = {
-		set_global_flag = hide_your_bread_hide_your_life
-
-		log = "ZAATH SPECIES SPAWNED: We've got some Xeno-phages up in here. Hide your BREAD! Hide your life!"
-
-		country_event = { id = HEEGM.8 days = 3 }
 	}
 }
 
@@ -137,6 +137,8 @@ country_event = {
 						has_planet_flag = TSP_zaath_home_system
 						has_planet_flag = TSP_zaath_core
 						is_planet_class = pc_crystal_asteroid # Fall back fail safe
+						is_asteroid = yes # For those without Crystal Asteroids installed
+						has_planet_flag = zaath_central_body
 					}
 				}
 				save_event_target_as = spawnpoint
@@ -151,6 +153,7 @@ country_event = {
 						is_planet_class = pc_crystal_asteroid
 						is_planet_class = pc_gas_giant
 						has_planet_flag = TSP_secret_blorg_planet
+						has_planet_flag = zaath_central_body
 					}
 				}
 				change_pc = pc_shrouded
@@ -163,6 +166,8 @@ country_event = {
 						is_planet_class = pc_asteroid
 						is_planet_class = pc_ice_asteroid
 						is_planet_class = pc_crystal_asteroid
+						is_asteroid = yes
+						has_planet_flag = zaath_central_body
 					}
 				}
 				change_pc = pc_shattered
@@ -171,16 +176,15 @@ country_event = {
 				set_name = "IT LISTENS"
 			}
 		}
+
+		log = "IT LISTENS: Zaath system selected"
+		set_global_flag = TSP_it_listens
+		
+		country_event = { id = HEEGM.2 days = 3 }
 		
 #		event_target:Zaathspecies = {
 #			set_species_homeworld = event_target:TSP_zaath_exploded_planet
 #		}
-	}
-
-	after = {
-		log = "IT LISTENS: Zaath system selected"
-		
-		country_event = { id = HEEGM.2 days = 3 }
 	}
 }
 		
@@ -276,14 +280,19 @@ country_event = { # Request
 country_event = {
 	id = HEEGM.8
 	hide_window = yes
-	is_triggered_only = yes
-
+	fire_only_once = yes
+#	is_triggered_only = yes
 
 	trigger = {
 		OR = {
 			is_country_type = global_event
 			is_ai = no
 		}
+		has_global_flag = hide_your_bread_hide_your_life # Zaath species is created
+	}
+
+	mean_time_to_happen = {
+		days = 2
 	}
 
 	immediate = {
@@ -303,6 +312,8 @@ country_event = {
 			ethos = {
 				ethic = ethic_fanatic_xenophobe # Only one, like a FE
 			}
+			auto_delete = no
+			ignore_initial_colony_error = yes
 		}
 
 		last_created_country = {
@@ -314,14 +325,14 @@ country_event = {
 				species = event_target:Zaathspecies
 				change_all = yes
 			}
-			
+
 			owner_species = {
 				set_species_homeworld = event_target:TSP_zaath_exploded_planet
 			}
 			
-			every_owned_fleet = {
-				destroy_fleet = this
-			}
+#			every_owned_fleet = { # This keeps destroying fleets
+#				destroy_fleet = this
+#			}
 
 			add_modifier = { modifier = Zaathstarterbuffs days = 3600 }
 			add_modifier = { modifier = Zaath days = -1 }
@@ -342,6 +353,7 @@ country_event = {
 			create_fleet = {
 				name = "Zaath Mothership and Fleet"
 				effect = {
+					set_location = event_target:TSP_zaath_return_zone
 					set_fleet_flag = AncientFlagshipA
 					set_owner = event_target:AncientA
 					create_ship = {
@@ -364,13 +376,13 @@ country_event = {
 						name = "IT'S ZAATHY TIME!"
 						design = "destroyer"
 						graphical_culture = avian_01
-						upgradable = no
+						upgradable = yes
 					}
 					create_ship = {
 						name = "NO, DAD, NO!"
 						design = "corvette"
 						graphical_culture = avian_01
-						upgradable = no
+						upgradable = yes
 					}
 					assign_leader = event_target:newruler
 					set_location = event_target:TSP_zaath_return_zone
@@ -399,37 +411,39 @@ country_event = {
 #			# XENOES! START, YOUR, ENGIIIIINES!! #
 
 			every_owned_fleet = { fleet_event = { id = TSP_HEO_flavor_ancient_events.1 } }
+
+			set_global_flag = zaath_a_processed
 		}
 	}
 
-	after = {
-		country_event = {
-			id = HEEGM.9
-			days = 3
-		}
-	}
+#	after = {
+#		country_event = {
+#			id = HEEGM.9
+#			days = 3
+#		}
+#	}
 }
 
 country_event = {
 	id = HEEGM.9
 	hide_window = yes
-	is_triggered_only = yes
+#	is_triggered_only = yes
+	fire_only_once = yes
 
 	trigger = {
 		OR = {
 			is_country_type = global_event
 			is_ai = no
 		}
+		has_global_flag = zaath_a_processed
 	}
 
 	immediate = {
 		create_country = { 
 			name = "The Destructive Ancients"
 			type = TheAncients
-			auto_delete = no
 			name_list = PRT1
 			ship_prefix = "ZDA-B"
-			authority = auth_ancient
 			civics = {
 				civic = civic_ancient
 				civic = civic_GM
@@ -437,9 +451,12 @@ country_event = {
 			species = event_target:Zaathspecies
 			flag = random
 #			background = random
+			authority = auth_ancient
 			ethos = {
 				ethic = ethic_fanatic_militarist # Only one, like a FE
 			}
+			auto_delete = no
+			ignore_initial_colony_error = yes
 		}
 
 		last_created_country = {
@@ -471,6 +488,7 @@ country_event = {
 				effect = {
 					set_fleet_flag = AncientFlagshipB
 					set_owner = event_target:AncientB
+					set_location = event_target:TSP_zaath_return_zone
 					create_ship = {
 						name = "Phoenix"
 						design = "Ancient_Flagship"
@@ -480,7 +498,7 @@ country_event = {
 					create_ship = {
 						name = "The Big 'OOF' of Grox"
 						design = "corrupted_avatar"
-						# Graphical Cultures don't exist for Psionic creatures
+						# Graphical Cultures don't exist for Psionic Creatures
 						upgradable = no
 					}
 					create_ship = {
@@ -499,13 +517,13 @@ country_event = {
 						name = "IT'S ZAATHY TIME!"
 						design = "destroyer"
 						graphical_culture = avian_01
-						upgradable = no
+						upgradable = yes
 					}
 					create_ship = {
 						name = "NO DAD, NO!"
 						design = "corvette"
 						graphical_culture = avian_01
-						upgradable = no
+						upgradable = yes
 					}
 					assign_leader = event_target:newruler
 					set_location = event_target:TSP_zaath_return_zone
@@ -522,6 +540,8 @@ country_event = {
 			last_created_fleet = {
 				set_fleet_flag = TSP_ZAATH_FLEET_B
 			}
+
+			set_global_flag = zaath_b_processed
 			
 #			every_owned_fleet = {
 #				limit = { NOT = { has_fleet_flag = TSP_ZAATH_FLEET_B }  }
@@ -537,31 +557,36 @@ country_event = {
 			}
 		}
 	}
-	after = {
-		country_event = {
-			id = HEEGM.10
-			days = 3
-		}
-	}
+#	after = {
+#		country_event = {
+#			id = HEEGM.10
+#			days = 3
+#		}
+#	}
 }
 
 country_event = {
 	id = HEEGM.10
 	hide_window = yes
-	is_triggered_only = yes
+#	is_triggered_only = yes
+	fire_only_once = yes
 
 	trigger = {
 		OR = {
 			is_country_type = global_event
 			is_ai = no
 		}
+		has_global_flag = zaath_b_processed
+	}
+
+	mean_time_to_happen = {
+		days = 2
 	}
 
 	immediate = {
 		create_country = { 
 			name = "The Benevolent Ancients"
 			type = TheAncients
-			auto_delete = no
 			name_list = PRT1
 			ship_prefix = "ZDA-C"
 			authority = auth_ancient
@@ -576,6 +601,8 @@ country_event = {
 				ethic = ethic_fanatic_xenophile
 				ethic = ethic_pacifist
 			}
+			auto_delete = no
+			ignore_initial_colony_error = yes
 		}
 
 		last_created_country = {
@@ -583,11 +610,13 @@ country_event = {
 				kill_leader = { show_notification = no }
 			}
 			
-			set_faction_hostility = {
-				target = THIS
-				set_hostile = no
-				set_neutral = no
-				set_friendly = yes
+			every_country = {
+				set_faction_hostility = {
+					target = THIS
+					set_hostile = no
+					set_neutral = no
+					set_friendly = yes
+				}
 			}
 
 			set_graphical_culture = extra_dimensional_01
@@ -648,6 +677,8 @@ country_event = {
 			last_created_fleet = {
 				set_fleet_flag = TSP_ZAATH_FLEET_C
 			}
+
+			set_global_flag = zaath_c_processed
 			
 #			every_owned_fleet = {
 #				limit = { NOT = { has_fleet_flag = TSP_ZAATH_FLEET_C }  }

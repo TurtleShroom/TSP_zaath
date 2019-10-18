@@ -1,10 +1,10 @@
 namespace = zaathcomms
 
-#
-#	HOW THE ZAATH AND DEFAULT EMPIRES SPEAK.
-#					By Oblivious
-# ...stupid default skins, jk
-#
+#########################################################
+#		HOW THE ZAATH AND DEFAULT EMPIRES SPEAK.		#
+#					By Oblivious						#
+# 			...stupid default skins, jk					#
+#########################################################
 
 #1-100 ZAATH COMMS
 #200-300 Default FROM Zaath
@@ -795,7 +795,7 @@ country_event = {#Zaath Requests Pop to eat
 	
 	option = {
 		name = "ACCEPT"
-		event_target:target0 = { add_resource = { zdecadence = -7 } }
+		event_target:target0 = { add_resource = { Zdecadence = -7 } }
 	}
 	option = {
 		name = "DECLINE"
