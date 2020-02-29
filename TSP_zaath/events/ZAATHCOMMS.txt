@@ -74,7 +74,7 @@ fleet_event = {
 		}
 	}
 
-	option = {#GM Options for Player --- PUNISHMENTS, Warmonger ceus belli, END warmonger ceus belli
+	option = { # GM Options for Player --- PUNISHMENTS, Warmonger ceus belli, END warmonger ceus belli
 		name = "zaathcomms.1.a"
 		event_target:target0 = {
 			country_event = { id = zaathcomms.2 }
@@ -101,14 +101,14 @@ fleet_event = {
 		}
 	}
 	
-	option = {#Break Subject
+	option = { # Break Subject
 		name = "zaathcomms.1.dd"
 		hidden_effect = {
 			event_target:target0 = { country_event = { id = zaathcomms.6 } }
 		}
 	}
 	
-	option = {#Induct into Zaath Cult
+	option = { # Induct into Zaath Cult
 		name = "zaathcomms.1.e"
 		allow = {
 			years_passed > 15
@@ -116,7 +116,7 @@ fleet_event = {
 		event_target:target0 = { country_event = { id = zaathcomms.11 } }
 	}	
 	
-	option = {#Request Pop TO EAT (Decadence DOWN)
+	option = { # Request Pop TO EAT (Decadence DOWN)
 		name = "zaathcomms.1.g"
 		allow = {
 			years_passed > 20
@@ -130,7 +130,7 @@ fleet_event = {
 	}
 }
 
-country_event = {#Options
+country_event = { # Options
 	id = zaathcomms.2
 	title = TRANSMISSION
 	desc = zaathcomms.2.desc
@@ -152,14 +152,12 @@ country_event = {#Options
 		}
 		default_hide_option = yes
 	}
-	option = {#Turn OFF Warmonger ceus-belli
+	option = { # Turn OFF Warmonger ceus-belli
 		name = "zaathcomms.2.b"
 		allow = { event_target:target1 = { has_country_flag = WARMON } }
-		event_target:target1 = {
-		remove_country_flag = WARMON
-		}
+		event_target:target1 = { remove_country_flag = WARMON }
 		hidden_effect = {
-		country_event = { id = zaathcomms.2 }
+			country_event = { id = zaathcomms.2 }
 		}
 		default_hide_option = yes
 	}
@@ -184,73 +182,73 @@ country_event = {#GIFTS
 		room = shroud_room	
 	}
 	
-	option = {#Small Gift MINERALS
+	option = { # Small Gift MINERALS
 		name = "zaathcomms.3.a"
 		event_target:target0 = { add_resource = { Zdecadence = 5 } }
 		event_target:target1 = { country_event = { id = zaathcomms.200 } }
 		response_text = zaathcommsDONE
 	}
-	option = {#Medium Gift MINERALS
+	option = { # Medium Gift MINERALS
 		name = "zaathcomms.3.b"
 		event_target:target0 = { add_resource = { Zdecadence = 10 } }
 		event_target:target1 = { country_event = { id = zaathcomms.201 } }
 		response_text = zaathcommsDONE
 	}
-	option = {#Big Gift MINERALS
+	option = { # Big Gift MINERALS
 		name = "zaathcomms.3.c"
 		event_target:target0 = { add_resource = { Zdecadence = 15 } }
 		event_target:target1 = { country_event = { id = zaathcomms.202 } }
 		response_text = zaathcommsDONE
 	}
-	option = {#Small Gift ENERGY
+	option = { # Small Gift ENERGY
 		name = "zaathcomms.3.d"
 		event_target:target0 = { add_resource = { Zdecadence = 5 } }
 		event_target:target1 = { country_event = { id = zaathcomms.203 } }
 		response_text = zaathcommsDONE
 	}
-	option = {#Medium Gift ENERGY
+	option = { # Medium Gift ENERGY
 		name = "zaathcomms.3.e"
 		event_target:target0 = { add_resource = { Zdecadence = 10 } }
 		event_target:target1 = { country_event = { id = zaathcomms.204 } }
 		response_text = zaathcommsDONE
 	}
-	option = {#Big Gift ENERGY
+	option =  {# Big Gift ENERGY
 		name = "zaathcomms.3.f"
 		event_target:target0 = { add_resource = { Zdecadence = 15 } }
 		event_target:target1 = { country_event = { id = zaathcomms.205 } }
 		response_text = zaathcommsDONE
 	}
-	option = {#Small Gift FOOD
+	option = { # Small Gift FOOD
 		name = "zaathcomms.3.g"
 		event_target:target0 = { add_resource = { Zdecadence = 5 } }
 		event_target:target1 = { country_event = { id = zaathcomms.206 } }
 		response_text = zaathcommsDONE
 	}
-	option = {#Medium Gift FOOD
+	option = { # Medium Gift FOOD
 		name = "zaathcomms.3.h"
 		event_target:target0 = { add_resource = { Zdecadence = 10 } }
 		event_target:target1 = { country_event = { id = zaathcomms.207 } }
 		response_text = zaathcommsDONE
 	}
-	option = {#Big Gift FOOD
+	option = { # Big Gift FOOD
 		name = "zaathcomms.3.i"
 		event_target:target0 = { add_resource = { Zdecadence = 15 } }
 		event_target:target1 = { country_event = { id = zaathcomms.208 } }
 		response_text = zaathcommsDONE
 	}
-	option = {#Small Gift ALLOY
+	option = { # Small Gift ALLOY
 		name = "zaathcomms.3.j"
 		event_target:target0 = { add_resource = { Zdecadence = 5 } }
 		event_target:target1 = { country_event = { id = zaathcomms.211 } }
 		response_text = zaathcommsDONE
 	}
-	option = {#Medium Gift ALLOY
+	option = { # Medium Gift ALLOY
 		name = "zaathcomms.3.k"
 		event_target:target0 = { add_resource = { Zdecadence = 10 } }
 		event_target:target1 = { country_event = { id = zaathcomms.212 } }
 		response_text = zaathcommsDONE
 	}
-	option = {#Big Gift ALLOY
+	option = { # Big Gift ALLOY
 		name = "zaathcomms.3.l"
 		event_target:target0 = { add_resource = { Zdecadence = 15 } }
 		event_target:target1 = { country_event = { id = zaathcomms.213 } }
@@ -262,23 +260,23 @@ country_event = {#GIFTS
 	}
 }
 
-country_event = {#Demand SUBJECT
+country_event = { # Demand SUBJECT
 	id = zaathcomms.4
 	title = TRANSMISSION
-	desc = zaathcomms.4.desc #WARNING/// Gain 10 Decadence when demanded
+	desc = zaathcomms.4.desc # WARNING/// Gain 10 Decadence when demanded
 	diplomatic = yes
 	is_triggered_only = yes
 	picture_event_data = {
 		portrait = event_target:target1
 		room = shroud_room	
 	}
-	option = {#YES
+	option = { # YES
 		name = "zaathcomms.4.a"
 		event_target:target0 = { add_resource = { Zdecadence = 10 } }
 		event_target:target1 = { country_event = { id = zaathcomms.209 } }
 		response_text = zaathcommsDONE
 	}
-	option = {#NO (RESPONSE TEXT TO BE ADDED)
+	option = { # NO (RESPONSE TEXT TO BE ADDED)
 		name = "zaathcomms.4.b"
 		response_text = zaathcommsGChoice #Good Choice
 		set_country_flag = zaath_subject_recently_demanded
@@ -326,9 +324,8 @@ country_event = {#Break Subject (ZAATH) ##Warn them and lower decadence by 5
 				every_fleet_in_system = {
 					limit = {
 						is_ship_size = ZaathGuardFort
-						}
-						delete_fleet = this
 					}
+					delete_fleet = this
 				}
 			}
 		}
@@ -346,7 +343,7 @@ country_event = {#Subject Punishments
 		room = shroud_room
 	}
 	
-	option = {#Psychic Wave -- -10 Happiness/50% Crime
+	option = { # Psychic Wave -- -10 Happiness/50% Crime
 		name = OMINOUS
 	}
 	option = {
@@ -364,7 +361,7 @@ country_event = {#Subject Punishments
 	}
 }
 
-country_event = {#Zaath Cult Confirmation
+country_event = { # Zaath Cult Confirmation
 	id = zaathcomms.11
 	title = TRANSMISSION
 	desc = zaathcomms.11.desc

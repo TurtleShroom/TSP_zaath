@@ -4,8 +4,19 @@
 
 TSP_sys_zaath_kitchen = {
 	potential = {
-		ROOT = {
-			any_planet = {
+		OR = {
+			ROOT = {
+				any_system_planet = {
+					OR = {
+						has_planet_flag = zaath_central_body
+						has_planet_flag = it_has_nerves_of_steel
+						has_planet_flag = TSP_zaath_i_swear_this_is_a_star
+						has_planet_flag = TSP_zaath_home_system_flavor_planet
+						has_planet_flag = zaath_flavor_explosion_planet
+					}
+				}
+			}
+			any_system_planet = {
 				OR = {
 					has_planet_flag = zaath_central_body
 					has_planet_flag = it_has_nerves_of_steel
@@ -18,19 +29,27 @@ TSP_sys_zaath_kitchen = {
 	}
 	
 	weight_modifier = {
-		base = 1000
+		base = 1
 		modifier = {
-			factor = 0
-			NOT = {
-				any_planet = {
-					AND = {
-						has_planet_flag = zaath_central_body
-						has_planet_flag = it_has_nerves_of_steel
-						has_planet_flag = TSP_zaath_i_swear_this_is_a_star
-						has_planet_flag = TSP_zaath_home_system_flavor_planet
-						has_planet_flag = zaath_flavor_explosion_planet
-					}
+			factor = 9999
+			any_system_planet = {
+				OR = {
+					has_planet_flag = zaath_central_body
+					has_planet_flag = it_has_nerves_of_steel
+					has_planet_flag = TSP_zaath_i_swear_this_is_a_star
+					has_planet_flag = TSP_zaath_home_system_flavor_planet
+					has_planet_flag = zaath_flavor_explosion_planet
 				}
+			}
+		}
+		modifier = {
+			factor = 0.01
+			AND = {
+				any_system_planet = { NOT = { has_planet_flag = zaath_central_body } }
+				any_system_planet = { NOT = { has_planet_flag = it_has_nerves_of_steel } }
+				any_system_planet = { NOT = { has_planet_flag = TSP_zaath_i_swear_this_is_a_star } }
+				any_system_planet = { NOT = { has_planet_flag = TSP_zaath_home_system_flavor_planet } }
+				any_system_planet = { NOT = { has_planet_flag = zaath_flavor_explosion_planet } }
 			}
 		}
 	}

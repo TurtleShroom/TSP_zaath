@@ -93,19 +93,19 @@
 # Dialogue
 #
  zaathcomms.1.desc:0 "Go on... the Shroud is listening to your every command..."
- zaathcomms.1.desc:1 "What have we today..."
- zaathcomms.1.desc:2 "The Galaxy... It's very primitive... let's fix that, together."
+ zaathcomms.1.desc:1 "What have we today?"
+ zaathcomms.1.desc:2 "The galaxy... it's very primitive... let's fix that, together."
 #
  zaathcomms.2.desc:0 "The Shroud beckons... §PGAME MASTER§!, what are we doing?"
 #
- zaathcomms.3.desc:0 "Gifting the primitives? Hmm.. I suppose.."
+ zaathcomms.3.desc:0 "Gifting the primitives? Hmm... I suppose."
  zaathcomms.3.desc:1 "Primitives don't deserve love... but if you think so..."
  zaathcomms.3.desc:2 "How much are giving these primitives...?"
 #
  zaathcomms.4.desc:0 "..."
 
  zaathcommsSHAME:0 "Such a shame that the primitive creatures do not understand even this simple gesture."
- zaathcommsSHAME:1 "ZAAAAAAAAAAAAAAAAAH!"
+ zaathcommsSHAME:1 "REEEEEEEEEEEEEEEEEEE!"
  zaathcommsSHAME:2 "Primitives..."
  zaathcommsSHAME:3 "Shame..."
  zaathcommsSHAME:4 "DEATH COMES TO THE UNGRATEFUL!"
@@ -141,7 +141,7 @@
 #
 # Casus Belli and War Goals
 #
- cb_warmonger:0 "Coalition"
- wg_warmongerattack:0 "Coalition"
- wg_warmongerdefense:0 "Coalition Defense"
+ cb_warmonger:0 "Zaath Coalition"
+ wg_warmongerattack:0 "Zaath Coalition"
+ wg_warmongerdefense:0 "Zaath Coalition Defense"
  

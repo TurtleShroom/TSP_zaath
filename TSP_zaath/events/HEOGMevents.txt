@@ -120,7 +120,7 @@ country_event = {
 
 			spawn_system = {
 				min_distance = 1
-				max_distance = 12
+				max_distance = 8
 				initializer = TSP_ssb_loaf_core_system_initializer
 				hyperlane = yes
 				is_discovered = yes
