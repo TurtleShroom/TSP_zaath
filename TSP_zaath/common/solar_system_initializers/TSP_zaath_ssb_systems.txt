@@ -18,7 +18,12 @@ TSP_ssb_loaf_core_system_initializer = {
 
 #	usage = custom_empire
 
-	flags = { TSP_zaath_home_system TSP_zaath_core TSP_zaath_cluster }
+	flags = {
+		TSP_zaath_home_system
+		TSP_zaath_core
+		TSP_zaath_cluster
+		TSP_zaath_i_swear_this_is_a_star # Star flag
+	}
 
 	max_instances = 1
 
@@ -32,8 +37,8 @@ TSP_ssb_loaf_core_system_initializer = {
 		class = "TSP_zaath_potato"
 		orbit_distance = 0
 		orbit_angle = 1
-		size = 60
-		has_ring = no
+		size = 75
+		has_ring = yes
 
 		init_effect = {
 			set_planet_flag = zaath_central_body

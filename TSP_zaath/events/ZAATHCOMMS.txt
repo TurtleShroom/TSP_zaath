@@ -56,8 +56,10 @@ fleet_event = {
 		}
 		from = {
 			is_star = yes
-			has_authority = auth_ancient
-			has_authority = auth_reformedancient
+			OR = {
+				has_authority = auth_ancient
+				has_authority = auth_reformedancient
+			}
 		}
 	}
 	
@@ -313,10 +315,11 @@ country_event = {#Break Subject (ZAATH) ##Warn them and lower decadence by 5
 		name = "Yes"
 		add_resource = { Zdecadence = -5 }
 		hidden_effect = {
-		event_target:target1 = {
-			set_subject_of = {
-				who = none
-#				subject_type = no
+			event_target:target1 = {
+				set_subject_of = {
+					who = none
+#					subject_type = no
+				}
 			}
 		}
 		event_target:target1 = {
@@ -344,17 +347,21 @@ country_event = {#Subject Punishments
 	}
 	
 	option = { # Psychic Wave -- -10 Happiness/50% Crime
+		add_modifier = {
+			modifier = zaath_curse
+			days = 1825 # Five years
+		}
 		name = OMINOUS
 	}
-	option = {
-		name = OMINOUS
-	}
-	option = {
-		name = OMINOUS
-	}
-	option = {
-		name = OMINOUS
-	}
+#	option = {
+#		name = OMINOUS
+#	}
+#	option = {
+#		name = OMINOUS
+#	}
+#	option = {
+#		name = OMINOUS
+#	}
 	
 	option = {
 		name = CANCEL
@@ -374,8 +381,12 @@ country_event = { # Zaath Cult Confirmation
 	
 	option = {
 		name = "CONFIRM"
-	hidden_effect = {
-		event_target:target1 = { country_event = { id = zaathcomms.220 } }
+		hidden_effect = {
+			event_target:target1 = {
+				country_event = {
+					id = zaathcomms.220
+				}
+			}
 		}
 		event_target:target0 = { add_resource = { Zdecadence = 15 } }
 	}
@@ -655,28 +666,33 @@ country_event = {#Vassalization Accepted
 #			}
 		}
 		else_if = {#Xenophile Vassal
-			limit = { event_target:target0 = { 
-				has_ethic = ethic_fanatic_xenophile
-			} }
-		set_subject_of = {
-			who = event_target:target0
-			subject_type = Tesla
+			limit = { 
+				event_target:target0 = { 
+					has_ethic = ethic_fanatic_xenophile
+				}
+			}
+			set_subject_of = {
+				who = event_target:target0
+				subject_type = tesla
 			}
 		}
 		else = {#Militarist Vassal
-			if = { limit = { event_target:target0 = { 
-				has_ethic = ethic_fanatic_militarist
-			} }
-		set_subject_of = {
-			who = event_target:target0
-			subject_type = Bufferstate
+			if = {
+				limit = {
+					event_target:target0 = {
+						has_ethic = ethic_fanatic_militarist
+					}
+				}
+				set_subject_of = {
+					who = event_target:target0
+					subject_type = Bufferstate
+				}
 			}
-		}
 		}
 	}
 }
 
-country_event = {#Small Alloy Gift
+country_event = { # Small Alloy Gift
 	id = zaathcomms.211
 	title = TRANSMISSION
 	desc = zaathcomms.211.desc
@@ -786,14 +802,19 @@ country_event = {#Zaath Requests Pop to eat
 	desc = {
 		text = "zaathcomms.221.descc"
 		trigger = {
-			event_target:target0 = { has_ethic = ethic_fanatic_militarist }
+			event_target:target0 = {
+				has_ethic = ethic_fanatic_militarist
+			}
 		}
 	}
 	
 	option = {
 		name = "ACCEPT"
-		event_target:target0 = { add_resource = { Zdecadence = -7 } }
+		event_target:target0 = {
+			add_resource = { Zdecadence = -7 }
+		}
 	}
+
 	option = {
 		name = "DECLINE"
 		response_text = zaathcommsSHAME
@@ -805,7 +826,7 @@ country_event = {#Zaath Requests Pop to eat
 
 # Failed Concepts
 #
-#country_event = {#CONTACT SELF 2.2 BROKE this. No Self comms. Self Edict only.
+#country_event = { # CONTACT SELF 2.2 BROKE this. No Self comms. Self Edict only.
 #	id = zaathcomms.400
 #	title = TRANSMISSION
 #	desc = zaathcomms.400.desc
@@ -838,7 +859,7 @@ country_event = {#Zaath Requests Pop to eat
 #	}
 #}
 #
-#country_event = {#DISCONTINUED EVENT BROKE
+# country_event = {#DISCONTINUED EVENT BROKE
 #	id = zaathcomms.600
 #	title = DENIED
 #	desc = zaathcomms.600.desc

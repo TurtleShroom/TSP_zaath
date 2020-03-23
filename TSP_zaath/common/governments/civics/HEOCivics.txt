@@ -1,13 +1,15 @@
 civic_ancient = {
 	modification = no
 	pickable_at_start = no
+
+#	traits = {
+#		trait = trait_zaath
+#		trait = trait_psionic
+#		trait = trait_decadent
+#	}
+
 	random_weight = {
 		base = 0
-	}
-	traits = {
-		trait = trait_zaath
-		trait = trait_psionic
-		trait = trait_decadent
 	}
 }
 

@@ -36,7 +36,10 @@ selfcomms = {
 		NOT = { has_country_flag = self_communication_to_zaath }
 	}
 	effect = {
-		fleet_event = { id = zaathcomms.1 }
+		fleet_event = {
+			id = zaathcomms.1
+			days = 1
+		}
 		set_timed_country_flag = {
 			flag = self_communication_to_zaath
 			days = 30

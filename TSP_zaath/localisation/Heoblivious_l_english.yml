@@ -2,14 +2,17 @@
 #GENERAL
  civic_ancient:0 "The Ancient Zaaths"
  civic_GM:0 "Monothelite Puppetry"
- auth_ancient:0 "Fallen Zaath Authority"
- auth_reformedancient:0 "Ascended Zaath Authority"
 
  TheAncients:0 "Ancient Zaath Authority"
  TheAncients_desc:0 "A bunch of specimens called the Zaath. They have been here as long as, if not longer, than the Precursors. They are now reduced to the level of a Fallen Empire, their once great power reduced to a fleet-based rump state without a home."
 
  TheAncientsReformed:0 "Ascended Zaath Authority"
- TheAncientsReformed:0 "The Zaath have finally overcome their laziness and hedonism. They now seek greater control of the galaxy!"
+ TheAncientsReformed_desc:0 "The Zaath have finally overcome their laziness and hedonism. They now seek greater control of the galaxy!"
+
+ auth_ancient:0 "Fallen Zaath Authority"
+ auth_ancient_desc:0 "$TheAncients_desc$"
+ auth_reformedancient:0 "Ascended Zaath Authority"
+ auth_reformedancient_desc:0 "$TheAncientsReformed_desc"
 
  trait_zaath:0 "Zaath"
  trait_Rzaath:0 "Zaath-X"
@@ -18,11 +21,11 @@
 
 #Ascension Perks
  AncientThwarting:0 "Ancient Cleansers"
- AncientThwarting_desc:0 "Rid of the old, on with the new! These creatures must go."
+ AncientThwarting_desc:0 "Out with the old, in with the new! These creatures must go. \n\n §ROkay Boomers...§!"
  AncientThwarting_modifier_desc:0 "Damage to §YReformed Zaath§ increased by §G+50%§!"
 
  AncientReform:0 "Ancient Reformations 1"
- AncientReform_desc:0 "Zaath; like all empires have to start somewhere on regaining control of the galaxy."
+ AncientReform_desc:0 "Zaath, like all empires have to start somewhere on regaining control of the galaxy."
  AncientReform_modifier_desc:0 "Zaath will now automatically spawn colony ships to spread their influence further into the galaxy"
 
  AncientReformsTWO:0 "Ancient Reformations 2"
@@ -100,7 +103,7 @@
 #
  zaathcomms.3.desc:0 "Gifting the primitives? Hmm... I suppose."
  zaathcomms.3.desc:1 "Primitives don't deserve love... but if you think so..."
- zaathcomms.3.desc:2 "How much are giving these primitives...?"
+ zaathcomms.3.desc:2 "How much are we giving these primitives...?"
 #
  zaathcomms.4.desc:0 "..."
 

@@ -132,6 +132,7 @@ country_event = {
 				limit = {
 					OR = {
 						is_star = yes
+#						has_star_flag = TSP_zaath_i_swear_this_is_a_star
 						has_planet_flag = TSP_zaath_i_swear_this_is_a_star
 						has_planet_flag = zaath_central_body
 						has_planet_flag = TSP_zaath_home_system
